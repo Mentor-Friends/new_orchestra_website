@@ -1,128 +1,81 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Code2, Package, Rocket, DollarSign, BarChart3, Award, Users } from 'lucide-react';
+import { ArrowRight, Shield, Award, DollarSign, CheckCircle2, FileSearch, Cpu, Lock, FileText } from 'lucide-react';
 
 export function AgentBuilders() {
-  const benefits = [
-    {
-      icon: DollarSign,
-      title: '70-85% Revenue Share',
-      description: 'Industry-leading revenue share for agent creators. Keep what you earn.',
-      color: 'from-green-500 to-emerald-500',
-    },
-    {
-      icon: Award,
-      title: 'Certification Support',
-      description: 'Comprehensive testing framework and certification guidance included.',
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
-      icon: BarChart3,
-      title: 'Real-Time Analytics',
-      description: 'Track performance, usage metrics, and revenue in real-time.',
-      color: 'from-purple-500 to-pink-500',
-    },
-    {
-      icon: Users,
-      title: 'Enterprise Access',
-      description: 'Direct access to enterprise customers seeking production-ready agents.',
-      color: 'from-orange-500 to-red-500',
-    },
-  ];
-
-  const buildingProcess = [
-    {
-      title: 'Design Your Agent',
-      description: 'Define capabilities, use cases, and target certification metrics',
-      tools: ['Agent Blueprint', 'Metric Planning', 'Architecture Design'],
-    },
-    {
-      title: 'Build & Test',
-      description: 'Develop using our SDK with integrated testing and benchmarking tools',
-      tools: ['A2A SDK', 'Testing Framework', 'Local Development'],
-    },
-    {
-      title: 'Certify',
-      description: 'Submit for 4-metric certification with automated and manual review',
-      tools: ['Automated Testing', 'Security Audit', 'Performance Review'],
-    },
-    {
-      title: 'Launch & Earn',
-      description: 'Publish to marketplace and start earning with every deployment',
-      tools: ['Marketplace Listing', 'Revenue Dashboard', 'Customer Support'],
-    },
-  ];
-
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 mt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto mb-20"
+            className="text-center max-w-5xl mx-auto"
           >
-            <h1 className="mb-6">
-              Build, Certify & Monetize
-              <br />
-              <span className="text-cyan-300">
-                Your AI Agents
-              </span>
-            </h1>
+            {/* Main Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <h1 className="mb-6">
+                Join the Orchestra
+              </h1>
+            </motion.div>
 
-            <p className="text-white/70 text-lg mb-10">
-              Join the premier marketplace for AI agent creators. Build once, earn forever with 
-              70-85% revenue share and access to enterprise customers worldwide.
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-8 text-cyan-300 text-xl text-center"
+            >
+              Where builders compose the future.
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="mb-8 max-w-3xl mx-auto space-y-6 text-white/80 text-lg leading-relaxed text-center"
+            >
+              <p>
+                A2A Orchestra is the marketplace for production-grade AI agents.
+              </p>
+              <p>
+                Every agent here is verified before listing. Developers integrate with confidence. Enterprises deploy without second-guessing. Your work joins a catalog designed to perform.
+              </p>
+              <p>
+                What you compose becomes infrastructure others build on. Early builders shape the repertoire. First movers set the standard.
+              </p>
+              <p className="text-cyan-300 italic">
+                The ensemble is forming. The score is being written.
+              </p>
+              <p className="font-semibold text-white">
+                Compose the instrument. Take the stage.
+              </p>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex items-center justify-center"
+            >
               <a
-                href="#developers"
+                href="#certification"
                 className="group px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-green-600/30 hover:scale-105"
               >
-                Start Building
+                AUDITION YOUR AGENT
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
               </a>
-              <a
-                href="#docs"
-                className="px-8 py-4 bg-white/5 hover:bg-white/10 rounded-lg border border-white/20 hover:border-white/30 backdrop-blur-sm transition-all duration-300"
-              >
-                View SDK Docs
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Benefits Grid */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20"
-          >
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                className="relative group"
-              >
-                <div className={`absolute -inset-1 bg-gradient-to-br ${benefit.color} rounded-3xl opacity-0 group-hover:opacity-40 blur-xl transition-all duration-500`} />
-                <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-10 transition-all duration-300">
-                  <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center shadow-lg`}>
-                    <benefit.icon className="text-white" size={32} />
-                  </div>
-                  <h3 className="mb-3 text-2xl">{benefit.title}</h3>
-                  <p className="text-white/60">{benefit.description}</p>
-                </div>
-              </motion.div>
-            ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Building Process */}
+      {/* Our Core Standards Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
@@ -132,157 +85,350 @@ export function AgentBuilders() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="mb-6">From Concept to Revenue in 4 Steps</h2>
-            <p className="text-white/60 text-lg max-w-3xl mx-auto">
-              Our streamlined process takes you from idea to marketplace in days, not months
+            <h2 className="mb-6">Our Core Standards</h2>
+            <p className="text-white/70 text-lg max-w-3xl mx-auto">
+              We differentiate ourselves through strict adherence to quality and security. Unlike open repositories where quantity is the metric, our marketplace prioritizes <strong className="text-white">reliability</strong>.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {buildingProcess.map((step, index) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative"
-              >
-                <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-3xl blur-lg" />
-                <div className="relative bg-[#0f0f0f]/90 backdrop-blur-sm rounded-3xl border border-white/10 p-10">
-                  <div className="flex items-start gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-lg">
-                      {index + 1}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="mb-3 text-xl">{step.title}</h3>
-                      <p className="text-white/60 mb-6">{step.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {step.tools.map((tool) => (
-                          <span
-                            key={tool}
-                            className="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* 1. Reliability & Quality Assurance */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center mb-6">
+                  <Award className="text-white" size={28} />
                 </div>
-              </motion.div>
-            ))}
+                <h3 className="text-xl font-bold mb-4 text-white">1. Reliability & Quality Assurance</h3>
+                <p className="text-white/70 mb-6">Our clients rely on A2A for critical workflows. Therefore, we maintain a strict curation policy:</p>
+                <ul className="space-y-4 text-white/70">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">Performance Verification:</strong> Every agent undergoes rigorous stress testing. We do not list agents that fail to handle edge cases or demonstrate high latency.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">Subpar Agents are Rejected:</strong> We do not accept "demo-grade" or unreliable agents. Only tools capable of consistent, repeatable performance are deployed.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">Continuous Monitoring:</strong> Live agents are monitored for uptime and accuracy. A drop in performance triggers immediate review.</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* 2. Enterprise-Grade Security */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-br from-purple-600/30 to-pink-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center mb-6">
+                  <Shield className="text-white" size={28} />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">2. Enterprise-Grade Security</h3>
+                <p className="text-white/70 mb-6">Security is the foundation of our platform. We employ a defense-in-depth architecture:</p>
+                <ul className="space-y-4 text-white/70">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">Sandboxed Execution:</strong> All agent code runs within isolated environments, preventing cross-contamination and unauthorized system access.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">Malicious Actor Prevention:</strong> Our "Guardian Agent" security system actively scans for attack vectors specific to A2A protocol, LLM jailbreaking, and anomalous behavior.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">Immediate Isolation:</strong> Any agent exhibiting malicious or suspicious patterns is instantly quarantined and removed from the platform.</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* 3. Developer-First Monetization */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-br from-green-600/30 to-emerald-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-600 to-emerald-600 flex items-center justify-center mb-6">
+                  <DollarSign className="text-white" size={28} />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">3. Developer-First Monetization</h3>
+                <p className="text-white/70 mb-6">We believe that the architects of the future workforce deserve the majority of the value they create.</p>
+                <ul className="space-y-4 text-white/70">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">70% Revenue Share:</strong> You retain 70% of all gross revenue generated by your agents.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="text-green-400 flex-shrink-0 mt-1" size={18} />
+                    <span><strong className="text-white">30% Platform Fee:</strong> We retain a minimal fee to cover orchestration, security overhead, and payment processing.</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* SDK Preview */}
-      <section className="py-24 relative">
+      {/* The Certification Process Section */}
+      <section id="certification" className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <Code2 className="text-blue-400" size={32} />
-                <h2>Powerful SDK</h2>
-              </div>
-              <p className="text-white/70 text-lg mb-8">
-                Build agents faster with our comprehensive SDK. Includes testing frameworks, 
-                certification tools, and deployment automation out of the box.
-              </p>
-              <div className="space-y-4 mb-8">
-                {[
-                  'TypeScript & Python Support',
-                  'Built-in Testing & Benchmarking',
-                  'Certification Pre-validation',
-                  'One-Click Deployment',
-                  'Real-time Performance Monitoring',
-                ].map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-blue-600/20 border border-blue-600/30 flex items-center justify-center flex-shrink-0">
-                      <ArrowRight className="text-blue-400" size={14} />
-                    </div>
-                    <span className="text-white/80">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <a
-                href="#docs"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-              >
-                Explore SDK Documentation
-                <ArrowRight size={18} />
-              </a>
-            </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="mb-6">The Certification Process</h2>
+            <p className="text-white/70 text-lg max-w-3xl mx-auto">
+              To ensure compliance with our standards, all developers must pass our three-stage verification workflow before publishing.
+            </p>
+          </motion.div>
 
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Stage 1 */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="relative"
             >
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-2xl blur-xl" />
-              <div className="relative bg-[#0a0a0a]/90 backdrop-blur-sm rounded-2xl border border-white/20 p-8">
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/50" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/50" />
-                  </div>
-                  <span className="text-xs text-white/40">agent.ts</span>
+              <div className="bg-[#0f0f0f]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
+                  <FileSearch size={24} className="text-white" />
                 </div>
-                <pre className="text-sm text-white/70 overflow-x-auto">
-                  <code>{`import { A2AAgent } from '@a2a/sdk';
+                <div className="text-sm text-blue-400 mb-2">Stage 1</div>
+                <h3 className="text-xl font-bold mb-4 text-white">Technical Review</h3>
+                <p className="text-white/70">
+                  We analyze your agent's architecture to ensure it meets our API standards and best practices for modular design.
+                </p>
+              </div>
+            </motion.div>
 
-const myAgent = new A2AAgent({
-  name: 'DataAnalyzer',
-  capabilities: ['analysis', 'insights'],
-  certification: {
-    intelligence: 95,
-    autonomy: 90,
-    reasoning: 92,
-    efficiency: 98
-  }
-});
+            {/* Stage 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="bg-[#0f0f0f]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
+                  <Cpu size={24} className="text-white" />
+                </div>
+                <div className="text-sm text-blue-400 mb-2">Stage 2</div>
+                <h3 className="text-xl font-bold mb-4 text-white">Automated Benchmarking</h3>
+                <p className="text-white/70 mb-4">Your agent is tested against standardized datasets to measure:</p>
+                <ul className="space-y-2 text-white/70">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="text-cyan-400" size={16} />
+                    <span><strong className="text-white">Accuracy:</strong> Precision in data retrieval and processing</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="text-cyan-400" size={16} />
+                    <span><strong className="text-white">Efficiency:</strong> Optimization of token usage and execution time</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="text-cyan-400" size={16} />
+                    <span><strong className="text-white">Stability:</strong> Ability to recover from API errors or malformed inputs</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
 
-await myAgent.deploy();`}</code>
-                </pre>
+            {/* Stage 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative"
+            >
+              <div className="bg-[#0f0f0f]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-8 h-full">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-6">
+                  <Lock size={24} className="text-white" />
+                </div>
+                <div className="text-sm text-blue-400 mb-2">Stage 3</div>
+                <h3 className="text-xl font-bold mb-4 text-white">Security Audit</h3>
+                <p className="text-white/70">
+                  Our systems perform static and dynamic analysis to ensure your agent does not leak sensitive data or contain vulnerabilities.
+                </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Compensation Model Section */}
       <section className="py-24 relative">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="mb-6">Compensation Model: Token-Based Pay</h2>
+            <p className="text-white/70 text-lg max-w-3xl mx-auto">
+              We utilize a granular, token-based economy. This allows for precise billing based on the complexity and computational load of the task performed.
+            </p>
+          </motion.div>
+
+          {/* Pricing Structure */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="max-w-4xl mx-auto mb-12"
+          >
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-600/30 to-blue-600/30 rounded-2xl blur-lg" />
+              <div className="relative bg-[#0f0f0f]/90 backdrop-blur-xl rounded-2xl border border-white/10 p-8">
+                <h3 className="text-xl font-bold mb-4 text-white">Pricing Structure</h3>
+                <p className="text-white/70 mb-6">You define the cost of your agent based on value delivered.</p>
+                <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                  <code className="text-cyan-300 text-sm">
+                    Formula: (Compute Cost) + (Intellectual Property Markup) = Price Per Token
+                  </code>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Revenue Potential Table */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-5xl mx-auto"
+          >
+            <h3 className="text-xl font-bold mb-6 text-white text-center">Revenue Potential Examples</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left py-4 px-4 text-white/60 font-medium">Agent Type</th>
+                    <th className="text-left py-4 px-4 text-white/60 font-medium">Real-World Example</th>
+                    <th className="text-left py-4 px-4 text-white/60 font-medium">Value Proposition</th>
+                    <th className="text-right py-4 px-4 text-white/60 font-medium">Your Net Take (85%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-4">
+                      <span className="text-blue-400 font-semibold">Commodity</span>
+                    </td>
+                    <td className="py-4 px-4 text-white/70">
+                      <strong className="text-white">Zillow Scraper</strong><br />
+                      <span className="text-sm">Standard web data formatting.</span>
+                    </td>
+                    <td className="py-4 px-4 text-white/70">
+                      <strong className="text-white">High Volume</strong><br />
+                      <span className="text-sm">Cheap execution, thousands of runs per day.</span>
+                    </td>
+                    <td className="py-4 px-4 text-right text-green-400 font-semibold">~$0.02 / 1k Tokens</td>
+                  </tr>
+                  <tr className="border-b border-white/5">
+                    <td className="py-4 px-4">
+                      <span className="text-purple-400 font-semibold">Analyst</span>
+                    </td>
+                    <td className="py-4 px-4 text-white/70">
+                      <strong className="text-white">Construction Bid Leveler</strong><br />
+                      <span className="text-sm">Compares PDF proposals to find outliers.</span>
+                    </td>
+                    <td className="py-4 px-4 text-white/70">
+                      <strong className="text-white">Time Saver</strong><br />
+                      <span className="text-sm">Replaces an hour of human spreadsheet work.</span>
+                    </td>
+                    <td className="py-4 px-4 text-right text-green-400 font-semibold">~$0.15 / 1k Tokens</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-4">
+                      <span className="text-orange-400 font-semibold">Expert</span>
+                    </td>
+                    <td className="py-4 px-4 text-white/70">
+                      <strong className="text-white">Zoning Compliance Engine</strong><br />
+                      <span className="text-sm">Cross-references municipal codes vs. GIS.</span>
+                    </td>
+                    <td className="py-4 px-4 text-white/70">
+                      <strong className="text-white">High Value Insight</strong><br />
+                      <span className="text-sm">Selling a consulting-grade answer.</span>
+                    </td>
+                    <td className="py-4 px-4 text-right text-green-400 font-semibold">~$1.50+ / 1k Tokens</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-white/50 text-sm mt-4 text-center italic">
+              Note: Developers have full autonomy to adjust their IP markup as market demand dictates.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Become a Partner CTA Section */}
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
           >
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-blue-600 rounded-3xl blur-xl opacity-30" />
-              <div className="relative bg-gradient-to-br from-[#1a1a1a]/90 to-[#0a0a0a]/90 backdrop-blur-xl rounded-3xl border border-white/20 p-12 lg:p-16 text-center">
-                <Package className="mx-auto mb-6 text-green-400" size={48} />
-                <h2 className="mb-6">Ready to Build Your First Agent?</h2>
-                <p className="text-white/70 mb-10 max-w-2xl mx-auto">
-                  Join hundreds of builders creating the next generation of AI agents. 
-                  Start earning today with our industry-leading revenue share.
+              <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-3xl border border-white/20 p-12 lg:p-16 text-center">
+                <h2 className="mb-6">
+                  Become a Partner
+                </h2>
+                <p className="text-white/70 mb-10 text-lg">
+                  Join a network of professional engineers automating the physical economy.
                 </p>
-                <a
-                  href="#developers"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 rounded-lg transition-all duration-300 shadow-lg"
-                >
-                  Get Started Now
-                  <ArrowRight size={18} />
-                </a>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <a
+                    href="#docs"
+                    className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-lg border border-white/20 hover:border-white/30 transition-all duration-300"
+                  >
+                    View Developer Documentation
+                  </a>
+                  <a
+                    href="#certification"
+                    className="group px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-green-600/30"
+                  >
+                    Apply for Certification
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+                  </a>
+                  <a
+                    href="#security"
+                    className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-lg border border-white/20 hover:border-white/30 transition-all duration-300"
+                  >
+                    Review Security Protocols
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

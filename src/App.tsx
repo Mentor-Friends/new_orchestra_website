@@ -6,6 +6,7 @@ import { ProductDevelopment } from './pages/ProductDevelopment';
 import { Developers } from './pages/Developers';
 import { AgentBuilders } from './pages/AgentBuilders';
 import { Founders } from './pages/Founders';
+import { About } from './pages/About';
 import { Blogs } from './pages/Blogs';
 import { Docs } from './pages/Docs';
 import { Invest } from './pages/Invest';
@@ -53,6 +54,8 @@ export default function App() {
         return <AgentBuilders />;
       case 'founders':
         return <Founders />;
+      case 'about':
+        return <About />;
       case 'blogs':
         return <Blogs />;
       case 'docs':

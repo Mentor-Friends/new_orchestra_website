@@ -47,8 +47,8 @@ export function MainLanding() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32">
+      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 mt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,37 +70,44 @@ export function MainLanding() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-6 max-w-3xl mx-auto text-cyan-300 text-xl text-center"
+              className="mb-6 text-cyan-300 text-xl text-center"
             >
               Enterprises deploy. Developers ship. Builders cash out.
             </motion.p>
 
-            <motion.p
+            {/* Three Column Section */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mb-10 max-w-3xl mx-auto text-white/70 text-lg leading-relaxed text-center"
+              className="mb-10 w-full max-w-6xl mx-auto"
             >
-              The agent economy has been paralyzed by a standoff between the promise of AI and the reality of enterprise risk.
-            </motion.p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                {/* THE PROBLEM */}
+                <div className="flex flex-col">
+                  <h3 className="text-white font-bold text-xl mb-4 tracking-wide">THE PROBLEM</h3>
+                  <p className="text-white/70 text-base leading-relaxed">
+                    The agent economy has been paralyzed by a standoff between the promise of AI and the reality of enterprise risk.
+                  </p>
+                </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="mb-10 max-w-3xl mx-auto text-white/80 text-lg leading-relaxed text-center"
-            >
-              A2A Orchestra ends the standoff. By enforcing the Google A2A Protocol with adversarial security testing at the protocol level, we direct the only exchange where trust is mathematical, not theoretical.
-            </motion.p>
+                {/* THE SOLUTION */}
+                <div className="flex flex-col">
+                  <h3 className="text-white font-bold text-xl mb-4 tracking-wide">THE SOLUTION</h3>
+                  <p className="text-white/70 text-base leading-relaxed">
+                    A2A Orchestra ends the standoff. By enforcing the Google A2A Protocol with adversarial security testing at the protocol level, we direct the only exchange where trust is mathematical, not theoretical.
+                  </p>
+                </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="mb-10 max-w-3xl mx-auto text-white/80 text-lg leading-relaxed text-center"
-            >
-              This is the platform where Enterprises commission autonomous workforces. Developers stop building plumbing and start shipping intelligence. Builders capture enterprise budgets their competitors can't reach.
-            </motion.p>
+                {/* THE PLATFORM */}
+                <div className="flex flex-col">
+                  <h3 className="text-white font-bold text-xl mb-4 tracking-wide">THE PLATFORM</h3>
+                  <p className="text-white/70 text-base leading-relaxed">
+                    This is the platform where Enterprises commission autonomous workforces. Developers stop building plumbing and start shipping intelligence. Builders capture enterprise budgets their competitors can't reach.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -178,50 +185,6 @@ export function MainLanding() {
         </div>
       </section>
 
-      {/* Feature Cards Section */}
-      <section className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-20 max-w-4xl mx-auto"
-          >
-            <h2 className="mb-6">The Complete AI Agent Ecosystem</h2>
-            <p className="text-white/60 text-lg">
-              From neural verification to autonomous deployment - everything you need for enterprise AI
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features.map((feature, index) => (
-              <motion.a
-                key={feature.title}
-                href={feature.href}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative block"
-              >
-                <div className={`absolute -inset-1 bg-gradient-to-br ${feature.gradient} rounded-3xl opacity-0 group-hover:opacity-40 blur-xl transition-all duration-500`} />
-                <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-10 lg:p-12 transition-all duration-300 h-full">
-                  <div className={`mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center shadow-lg`}>
-                    <feature.icon className="text-white" size={32} />
-                  </div>
-                  <h3 className="mb-4 text-2xl">{feature.title}</h3>
-                  <p className="text-white/60 mb-6 leading-relaxed">{feature.description}</p>
-                  <div className="flex items-center gap-2 text-blue-400 group-hover:gap-3 transition-all duration-300">
-                    <span>Learn More</span>
-                    <ArrowRight size={18} />
-                  </div>
-                </div>
-              </motion.a>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-24 relative">
@@ -240,7 +203,7 @@ export function MainLanding() {
                   Ready to Get Started?
                 </h2>
                 <p className="text-white/70 mb-10 max-w-2xl mx-auto">
-                  Join enterprises and developers who trust A2A Orchestra for secure, 
+                  Join enterprises and developers who trust A2A Orchestra for secure,
                   certified, and enterprise-grade AI automation.
                 </p>
 

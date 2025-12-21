@@ -25,100 +25,146 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/90 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
+      <div className="max-w-7xl mx-auto">
+        {/* iOS-style glassmorphism pill container */}
+        <div className={`
+          flex items-center justify-between h-14 px-4 
+          rounded-2xl transition-all duration-500
+          ${scrolled
+            ? 'bg-white/10 backdrop-blur-2xl border border-white/20 shadow-lg shadow-black/20'
+            : 'bg-white/5 backdrop-blur-xl border border-white/10'
+          }
+        `}>
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition-opacity" />
-              <div className="relative w-9 h-9 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm">A2A</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur-md opacity-60 group-hover:opacity-100 transition-opacity" />
+              <div className="relative w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-white text-sm font-medium">A2A</span>
               </div>
             </div>
-            <span className="hidden sm:block">Orchestra</span>
+            <span className="hidden sm:block font-medium text-white/90">Orchestra</span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          {/* Desktop Navigation - iOS pill-style buttons */}
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className={`text-sm transition-colors duration-200 ${
-                  isActive(item.href)
-                    ? 'text-blue-400'
-                    : 'text-white/70 hover:text-white'
-                }`}
+                className={`
+                  px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300
+                  ${isActive(item.href)
+                    ? 'bg-white/15 text-white shadow-inner border border-white/20'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                  }
+                `}
               >
                 {item.label}
               </a>
             ))}
+          </div>
+
+          {/* Right side actions */}
+          <div className="hidden lg:flex items-center gap-2">
+            {/* iOS-style pill button for Sign Up */}
             <a
               href="#signup"
-              className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-300 text-sm shadow-lg shadow-blue-600/20"
+              className="
+                px-5 py-2 rounded-xl text-sm font-medium
+                bg-gradient-to-r from-blue-500 to-purple-500 
+                hover:from-blue-400 hover:to-purple-400
+                shadow-lg shadow-blue-500/30
+                border border-white/20
+                transition-all duration-300 hover:scale-105 hover:shadow-blue-500/40
+              "
             >
               Sign Up
             </a>
+            {/* iOS-style circular button for Profile */}
             <a
               href="#profile"
-              className="p-2 hover:bg-white/10 rounded-lg transition-all duration-200"
+              className="
+                p-2.5 rounded-xl 
+                bg-white/10 hover:bg-white/20 
+                border border-white/10 hover:border-white/20
+                transition-all duration-300
+              "
               title="Profile"
             >
-              <User size={20} className="text-white/70 hover:text-white" />
+              <User size={18} className="text-white/80" />
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - iOS style */}
           <button
-            className="lg:hidden text-white p-2"
+            className="
+              lg:hidden p-2 rounded-xl 
+              bg-white/10 hover:bg-white/20 
+              border border-white/10
+              transition-all duration-200
+            "
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={22} className="text-white" /> : <Menu size={22} className="text-white" />}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-black/95 backdrop-blur-xl border-b border-white/10">
-          <div className="px-6 py-4 space-y-3">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`block transition-colors duration-200 py-2 ${
-                  isActive(item.href)
-                    ? 'text-blue-400'
-                    : 'text-white/70 hover:text-white'
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="#signup"
-              className="block px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-300 text-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Sign Up
-            </a>
-            <a
-              href="#profile"
-              className="flex items-center gap-2 transition-colors duration-200 py-2 text-white/70 hover:text-white"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <User size={20} />
-              Profile
-            </a>
+        {/* Mobile Menu - iOS style dropdown */}
+        {mobileMenuOpen && (
+          <div className="
+            lg:hidden mt-2 p-4 
+            bg-white/10 backdrop-blur-2xl 
+            rounded-2xl border border-white/20 
+            shadow-xl shadow-black/20
+          ">
+            <div className="space-y-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`
+                    block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
+                    ${isActive(item.href)
+                      ? 'bg-white/15 text-white border border-white/20'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                    }
+                  `}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className="pt-2 border-t border-white/10 mt-2 space-y-2">
+                <a
+                  href="#signup"
+                  className="
+                    block px-4 py-3 rounded-xl text-sm font-medium text-center
+                    bg-gradient-to-r from-blue-500 to-purple-500 
+                    border border-white/20 shadow-lg shadow-blue-500/20
+                  "
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign Up
+                </a>
+                <a
+                  href="#profile"
+                  className="
+                    flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
+                    text-white/70 hover:text-white hover:bg-white/10
+                    transition-all duration-200
+                  "
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <User size={18} />
+                  Profile
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   );
 }
