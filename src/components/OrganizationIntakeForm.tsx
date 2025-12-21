@@ -10,14 +10,14 @@ interface FormData {
   primaryContactEmail: string;
   linkedin: string;
   organizationSize: string;
-  
+
   // Step 2
   primaryGoal: string;
   goalCategory: string;
   beforeState: string;
   afterState: string;
   successMetric: string;
-  
+
   // Step 3
   dataSources: string[];
   dataReadiness: string;
@@ -26,7 +26,7 @@ interface FormData {
   autonomyLevel: string;
   frequency: string;
   technicalPreferences: string;
-  
+
   // Step 4
   pilotStartDate: string;
   agreement: boolean;
@@ -103,11 +103,10 @@ export function OrganizationIntakeForm() {
           {[1, 2, 3, 4].map((step) => (
             <div key={step} className="flex items-center flex-1">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  step <= currentStep
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                    : 'bg-white/5 text-white/40 border border-white/10'
-                }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${step <= currentStep
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-amber-950'
+                    : 'bg-amber-500/10 text-amber-100/40 border border-amber-500/20'
+                  }`}
               >
                 {step < currentStep ? (
                   <CheckCircle2 size={20} />
@@ -117,16 +116,15 @@ export function OrganizationIntakeForm() {
               </div>
               {step < 4 && (
                 <div
-                  className={`flex-1 h-1 mx-2 transition-all duration-300 ${
-                    step < currentStep ? 'bg-gradient-to-r from-blue-600 to-purple-600' : 'bg-white/10'
-                  }`}
+                  className={`flex-1 h-1 mx-2 transition-all duration-300 ${step < currentStep ? 'bg-gradient-to-r from-amber-500 to-amber-600' : 'bg-amber-500/20'
+                    }`}
                 />
               )}
             </div>
           ))}
         </div>
         <div className="text-center">
-          <p className="text-white/60 text-sm">Step {currentStep} of {totalSteps}</p>
+          <p className="text-amber-100/60 text-sm">Step {currentStep} of {totalSteps}</p>
         </div>
       </div>
 
@@ -140,11 +138,11 @@ export function OrganizationIntakeForm() {
             transition={{ duration: 0.3 }}
             className="relative"
           >
-            <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-3xl blur-xl" />
-            <div className="relative bg-[#0f0f0f]/90 backdrop-blur-xl rounded-3xl border border-white/10 p-8 lg:p-12">
+            <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/20 to-amber-800/20 rounded-3xl blur-xl" />
+            <div className="relative bg-[#1a1208]/90 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-8 lg:p-12">
               {/* Step Header */}
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
                   <StepIcon size={32} className="text-white" />
                 </div>
                 <div>
@@ -154,7 +152,7 @@ export function OrganizationIntakeForm() {
                     {currentStep === 3 && 'Technical Scope'}
                     {currentStep === 4 && 'Timeline & Submission'}
                   </h2>
-                  <p className="text-white/60">
+                  <p className="text-amber-100/60">
                     {currentStep === 1 && 'Identify the client and key stakeholder'}
                     {currentStep === 2 && 'Capture the qualitative outcome and dream state'}
                     {currentStep === 3 && 'Determine complexity, integration needs, and data readiness'}
@@ -167,12 +165,12 @@ export function OrganizationIntakeForm() {
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm text-white/80 mb-2">Organization Name *</label>
+                    <label className="block text-sm text-amber-100/80 mb-2">Organization Name *</label>
                     <input
                       type="text"
                       value={formData.organizationName}
                       onChange={(e) => updateFormData('organizationName', e.target.value)}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                      className="w-full px-4 py-3 bg-amber-500/10 border border-amber-500/20 rounded-lg focus:outline-none focus:border-amber-400 transition-colors text-amber-100"
                       required
                     />
                   </div>
@@ -487,7 +485,7 @@ export function OrganizationIntakeForm() {
                     </select>
                   </div>
 
-                  <div className="p-6 bg-blue-600/10 border border-blue-500/20 rounded-xl">
+                  <div className="p-6 bg-amber-500/10 border border-amber-500/20 rounded-xl">
                     <label className="flex items-start gap-3 cursor-pointer">
                       <input
                         type="checkbox"
@@ -496,13 +494,13 @@ export function OrganizationIntakeForm() {
                         className="w-5 h-5 mt-0.5 rounded border-white/20 bg-white/5"
                         required
                       />
-                      <span className="text-sm text-white/90">
+                      <span className="text-sm text-amber-100/90">
                         I understand A2A Orchestra will review this scope and schedule a consultation to discuss feasibility and pricing.
                       </span>
                     </label>
                   </div>
 
-                  <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                  <div className="p-6 bg-amber-500/10 rounded-xl border border-amber-500/20">
                     <h3 className="text-lg mb-4">Summary</h3>
                     <div className="space-y-2 text-sm">
                       <p><span className="text-white/60">Organization:</span> <span className="text-white">{formData.organizationName || 'Not provided'}</span></p>
@@ -515,15 +513,14 @@ export function OrganizationIntakeForm() {
               )}
 
               {/* Navigation Buttons */}
-              <div className="flex items-center justify-between mt-10 pt-8 border-t border-white/10">
+              <div className="flex items-center justify-between mt-10 pt-8 border-t border-amber-500/20">
                 <button
                   type="button"
                   onClick={prevStep}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${
-                    currentStep === 1
+                  className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${currentStep === 1
                       ? 'opacity-0 pointer-events-none'
-                      : 'bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20'
-                  }`}
+                      : 'bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 hover:border-amber-500/40 text-amber-100'
+                    }`}
                 >
                   <ArrowLeft size={18} />
                   Previous
@@ -533,7 +530,7 @@ export function OrganizationIntakeForm() {
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-300 shadow-lg shadow-blue-600/20"
+                    className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 shadow-lg shadow-amber-600/20 text-amber-950 font-semibold"
                   >
                     Next
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
@@ -542,7 +539,7 @@ export function OrganizationIntakeForm() {
                   <button
                     type="submit"
                     disabled={!formData.agreement}
-                    className="group flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-300 shadow-lg shadow-blue-600/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 shadow-lg shadow-amber-600/20 disabled:opacity-50 disabled:cursor-not-allowed text-amber-950 font-semibold"
                   >
                     Submit Application
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />

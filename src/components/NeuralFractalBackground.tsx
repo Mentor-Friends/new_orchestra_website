@@ -73,14 +73,14 @@ export function NeuralFractalBackground() {
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       const width = window.innerWidth;
       const height = window.innerHeight;
-      
+
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
-      
+
       ctx.scale(dpr, dpr);
-      
+
       initializeNetwork();
     };
 
@@ -134,31 +134,31 @@ export function NeuralFractalBackground() {
       // Create asymmetric branches
       const numBranches = depth === 0 ? 3 : Math.random() > 0.5 ? 2 : 3;
       const lengthDecay = 0.55 + Math.random() * 0.25;
-      
+
       for (let i = 0; i < numBranches; i++) {
         // Asymmetric angle variations
         const baseAngle = (i / numBranches) * Math.PI * 2 + branchAngleVariation;
         const angleVariation = (Math.random() - 0.5) * Math.PI * 0.9;
         const elevationVariation = (Math.random() - 0.5) * Math.PI * 0.6;
-        
+
         // Create rotation matrix for branch direction
         const angle = baseAngle + angleVariation;
         const elevation = elevationVariation;
-        
+
         // Calculate perpendicular vectors
         const perpX = Math.cos(angle);
         const perpY = Math.sin(angle) * Math.cos(elevation);
         const perpZ = Math.sin(angle) * Math.sin(elevation);
-        
+
         // Mix with parent direction for organic look
         const mixFactor = 0.3 + Math.random() * 0.3;
         const newDirX = dirX * (1 - mixFactor) + perpX * mixFactor;
         const newDirY = dirY * (1 - mixFactor) + perpY * mixFactor;
         const newDirZ = dirZ * (1 - mixFactor) + perpZ * mixFactor;
-        
+
         // Normalize
         const mag = Math.sqrt(newDirX * newDirX + newDirY * newDirY + newDirZ * newDirZ);
-        
+
         createFractalBranch(
           endX, endY, endZ,
           newDirX / mag, newDirY / mag, newDirZ / mag,
@@ -175,35 +175,35 @@ export function NeuralFractalBackground() {
       segments = [];
       nodes = [];
 
-      const colors = ['blue', 'purple', 'cyan'];
+      const colors = ['gold', 'amber', 'bronze'];
       const numFractals = 15; // Reduced for performance
       const spread = Math.max(canvas.width, canvas.height) * 0.8;
-      
+
       // Create multiple fractals
       for (let i = 0; i < numFractals; i++) {
         const angle = (i / numFractals) * Math.PI * 2 + Math.random() * 0.5;
         const radius = spread * 0.3 + Math.random() * spread * 0.2;
-        
+
         const startX = Math.cos(angle) * radius;
         const startY = Math.sin(angle) * radius;
         const startZ = (Math.random() - 0.5) * 300;
-        
+
         const centerBias = 0.35;
         const dirToCenter = { x: -startX, y: -startY, z: -startZ };
         const mag = Math.sqrt(dirToCenter.x ** 2 + dirToCenter.y ** 2 + dirToCenter.z ** 2);
-        
+
         const randomDir = {
           x: (Math.random() - 0.5) * 2,
           y: (Math.random() - 0.5) * 2,
           z: (Math.random() - 0.5) * 2,
         };
         const randomMag = Math.sqrt(randomDir.x ** 2 + randomDir.y ** 2 + randomDir.z ** 2);
-        
+
         const finalDirX = (dirToCenter.x / mag) * centerBias + (randomDir.x / randomMag) * (1 - centerBias);
         const finalDirY = (dirToCenter.y / mag) * centerBias + (randomDir.y / randomMag) * (1 - centerBias);
         const finalDirZ = (dirToCenter.z / mag) * centerBias + (randomDir.z / randomMag) * (1 - centerBias);
         const finalMag = Math.sqrt(finalDirX ** 2 + finalDirY ** 2 + finalDirZ ** 2);
-        
+
         createFractalBranch(
           startX, startY, startZ,
           finalDirX / finalMag, finalDirY / finalMag, finalDirZ / finalMag,
@@ -226,13 +226,13 @@ export function NeuralFractalBackground() {
         // or just use a faster loop
         for (let j = i + 1; j < segments.length; j++) {
           const s2 = segments[j];
-          
+
           // Check distance between end of s1 and start/end of s2
           const dx = s1.x2 - s2.x1;
           const dy = s1.y2 - s2.y1;
           const dz = s1.z2 - s2.z1;
-          const distSq = dx*dx + dy*dy + dz*dz;
-          
+          const distSq = dx * dx + dy * dy + dz * dz;
+
           if (distSq < thresholdSq) {
             s1.connections.push(j);
             s2.connections.push(i);
@@ -244,7 +244,7 @@ export function NeuralFractalBackground() {
       if (segments.length > 0) {
         const visited = new Set<number>();
         const components: number[][] = [];
-        
+
         for (let i = 0; i < segments.length; i++) {
           if (!visited.has(i)) {
             const component: number[] = [];
@@ -263,39 +263,39 @@ export function NeuralFractalBackground() {
             components.push(component);
           }
         }
-        
+
         // Sort components by size and pick the largest
         components.sort((a, b) => b.length - a.length);
         const lccIndices = new Set(components[0] || []);
-        
+
         // Filter segments and rebuild connections
         const oldToNew = new Map<number, number>();
         const filteredSegments: FractalSegment[] = [];
-        
+
         segments.forEach((s, i) => {
           if (lccIndices.has(i)) {
             oldToNew.set(i, filteredSegments.length);
             filteredSegments.push(s);
           }
         });
-        
+
         // Update connections with new indices
         filteredSegments.forEach(s => {
           s.connections = s.connections
             .filter(oldIdx => lccIndices.has(oldIdx))
             .map(oldIdx => oldToNew.get(oldIdx)!);
         });
-        
+
         segments = filteredSegments;
 
         // Rebuild nodes list from remaining segments to ensure no floating nodes
         const newNodes: FractalNode[] = [];
-        const nodeKey = (x: number, y: number, z: number) => 
+        const nodeKey = (x: number, y: number, z: number) =>
           `${Math.round(x)},${Math.round(y)},${Math.round(z)}`;
         const seenNodes = new Set<string>();
 
         segments.forEach(s => {
-          [ {x: s.x1, y: s.y1, z: s.z1}, {x: s.x2, y: s.y2, z: s.z2} ].forEach(p => {
+          [{ x: s.x1, y: s.y1, z: s.z1 }, { x: s.x2, y: s.y2, z: s.z2 }].forEach(p => {
             const key = nodeKey(p.x, p.y, p.z);
             if (!seenNodes.has(key)) {
               seenNodes.add(key);
@@ -324,14 +324,14 @@ export function NeuralFractalBackground() {
 
     const resetParticle = (particle: Particle, segmentIndex?: number) => {
       if (segments.length === 0) return;
-      
+
       // Free old segment
       if (segments[particle.segmentIndex]) {
         segments[particle.segmentIndex].isOccupied = false;
       }
 
       let idx = segmentIndex !== undefined ? segmentIndex : Math.floor(Math.random() * segments.length);
-      
+
       // If the chosen segment is occupied, try to find a free one (up to 10 attempts)
       if (segments[idx].isOccupied) {
         for (let i = 0; i < 10; i++) {
@@ -346,7 +346,7 @@ export function NeuralFractalBackground() {
       const segment = segments[idx];
       segment.isOccupied = true;
       const reverse = Math.random() > 0.5;
-      
+
       particle.fromX = reverse ? segment.x2 : segment.x1;
       particle.fromY = reverse ? segment.y2 : segment.y1;
       particle.fromZ = reverse ? segment.z2 : segment.z1;
@@ -367,12 +367,12 @@ export function NeuralFractalBackground() {
     const tempProj = { x: 0, y: 0, scale: 0, z: 0 };
 
     const transformPointMutate = (
-      x: number, 
-      y: number, 
-      z: number, 
-      cosY: number, 
-      sinY: number, 
-      cosX: number, 
+      x: number,
+      y: number,
+      z: number,
+      cosY: number,
+      sinY: number,
+      cosX: number,
       sinX: number,
       camZ: number,
       out: { x: number, y: number, z: number }
@@ -380,21 +380,21 @@ export function NeuralFractalBackground() {
       // Rotate around Y axis
       const rotX = x * cosY - z * sinY;
       const rotZ_temp = x * sinY + z * cosY;
-      
+
       // Rotate around X axis
       const rotY = y * cosX - rotZ_temp * sinX;
       const rotZ = y * sinX + rotZ_temp * cosX;
-      
+
       out.x = rotX;
       out.y = rotY;
       out.z = rotZ + camZ;
     };
 
     const project3DMutate = (
-      x: number, 
-      y: number, 
-      z: number, 
-      centerX: number, 
+      x: number,
+      y: number,
+      z: number,
+      centerX: number,
       centerY: number,
       out: { x: number, y: number, scale: number, z: number }
     ) => {
@@ -408,37 +408,37 @@ export function NeuralFractalBackground() {
 
     const getLineColor = (color: string, opacity: number) => {
       switch (color) {
-        case 'blue':
-          return `rgba(59, 130, 246, ${opacity})`;
-        case 'purple':
-          return `rgba(168, 85, 247, ${opacity})`;
-        case 'cyan':
-          return `rgba(34, 211, 238, ${opacity})`;
+        case 'gold':
+          return `rgba(251, 191, 36, ${opacity})`; // amber-400
+        case 'amber':
+          return `rgba(217, 119, 6, ${opacity})`; // amber-600
+        case 'bronze':
+          return `rgba(180, 83, 9, ${opacity})`; // amber-700
         default:
-          return `rgba(96, 165, 250, ${opacity})`;
+          return `rgba(245, 158, 11, ${opacity})`; // amber-500
       }
     };
 
     const getLineGlowColor = (color: string, opacity: number) => {
       switch (color) {
-        case 'blue':
-          return `rgba(147, 197, 253, ${opacity})`;
-        case 'purple':
-          return `rgba(216, 180, 254, ${opacity})`;
-        case 'cyan':
-          return `rgba(103, 232, 249, ${opacity})`;
+        case 'gold':
+          return `rgba(253, 230, 138, ${opacity})`; // amber-200
+        case 'amber':
+          return `rgba(252, 211, 77, ${opacity})`; // amber-300
+        case 'bronze':
+          return `rgba(251, 191, 36, ${opacity})`; // amber-400
         default:
-          return `rgba(147, 197, 253, ${opacity})`;
+          return `rgba(254, 243, 199, ${opacity})`; // amber-100
       }
     };
 
     const drawSegment = (
-      segment: FractalSegment, 
-      centerX: number, 
-      centerY: number, 
-      cosY: number, 
-      sinY: number, 
-      cosX: number, 
+      segment: FractalSegment,
+      centerX: number,
+      centerY: number,
+      cosY: number,
+      sinY: number,
+      cosX: number,
       sinX: number,
       camZ: number
     ) => {
@@ -462,7 +462,7 @@ export function NeuralFractalBackground() {
       const avgZ = (z1 + z2) / 2;
       const depthFactor = Math.max(0.05, Math.min(1, 1 - avgZ / 2000));
       const totalOpacity = (segment.baseOpacity + segment.activity * 0.7) * depthFactor;
-      
+
       // Optimization: Use solid color instead of gradient for performance
       // The gradient was 0.5 -> 1.0 -> 0.5 opacity. We use 0.8 as an approximation.
       ctx.strokeStyle = getLineColor(segment.color, totalOpacity * 0.8);
@@ -482,7 +482,7 @@ export function NeuralFractalBackground() {
       }
 
       segment.activity *= 0.94;
-      
+
       return { avgZ, visible: true };
     };
 
@@ -490,36 +490,36 @@ export function NeuralFractalBackground() {
       node: FractalNode,
       centerX: number,
       centerY: number,
-      cosY: number, 
-      sinY: number, 
-      cosX: number, 
+      cosY: number,
+      sinY: number,
+      cosX: number,
       sinX: number,
       camZ: number
     ) => {
       transformPointMutate(node.x, node.y, node.z, cosY, sinY, cosX, sinX, camZ, tempPoint);
-      
+
       if (tempPoint.z < -500 || tempPoint.z > 2000) return;
-      
+
       project3DMutate(tempPoint.x, tempPoint.y, tempPoint.z, centerX, centerY, tempProj);
       const depthFactor = Math.max(0.1, Math.min(1, 1 - tempProj.z / 2000));
-      
+
       const nodeSize = node.size * tempProj.scale;
-      
+
       const gradient = ctx.createRadialGradient(
         tempProj.x, tempProj.y, 0,
         tempProj.x, tempProj.y, nodeSize * 2
       );
-      
+
       const glowColor = getLineGlowColor(node.color, 0.3 * depthFactor);
       gradient.addColorStop(0, `rgba(255, 255, 255, ${0.6 * depthFactor})`);
       gradient.addColorStop(0.4, glowColor);
-      gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
-      
+      gradient.addColorStop(1, 'rgba(217, 119, 6, 0)'); // amber-600 with 0 alpha
+
       ctx.fillStyle = gradient;
       ctx.beginPath();
       ctx.arc(tempProj.x, tempProj.y, nodeSize * 2, 0, Math.PI * 2);
       ctx.fill();
-      
+
       ctx.fillStyle = getLineColor(node.color, 0.8 * depthFactor);
       ctx.beginPath();
       ctx.arc(tempProj.x, tempProj.y, nodeSize, 0, Math.PI * 2);
@@ -527,12 +527,12 @@ export function NeuralFractalBackground() {
     };
 
     const drawParticle = (
-      particle: Particle, 
-      centerX: number, 
-      centerY: number, 
-      cosY: number, 
-      sinY: number, 
-      cosX: number, 
+      particle: Particle,
+      centerX: number,
+      centerY: number,
+      cosY: number,
+      sinY: number,
+      cosX: number,
       sinX: number,
       camZ: number
     ) => {
@@ -541,17 +541,17 @@ export function NeuralFractalBackground() {
       const currentY = particle.fromY + (particle.toY - particle.fromY) * particle.progress;
 
       transformPointMutate(currentX, currentY, currentZ, cosY, sinY, cosX, sinX, camZ, tempPoint);
-      
+
       if (tempPoint.z < -500 || tempPoint.z > 2000) return;
-      
+
       project3DMutate(tempPoint.x, tempPoint.y, tempPoint.z, centerX, centerY, tempProj);
-      
+
       const segment = segments[particle.segmentIndex];
       if (!segment) return;
-      
+
       const depthFactor = Math.max(0.1, Math.min(1, 1 - tempProj.z / 2000));
       const finalOpacity = particle.opacity * depthFactor;
-      
+
       // Calculate beam direction based on segment projection
       // We need the projected start and end points of the segment to align the beam
       // Optimization: We can approximate direction using the particle's movement
@@ -560,7 +560,7 @@ export function NeuralFractalBackground() {
       project3DMutate(tempPoint.x, tempPoint.y, tempPoint.z, centerX, centerY, tempProj); // Reusing tempProj for 'to' point
       const toX = tempProj.x;
       const toY = tempProj.y;
-      
+
       // Restore current particle position (we overwrote tempProj)
       transformPointMutate(currentX, currentY, currentZ, cosY, sinY, cosX, sinX, camZ, tempPoint);
       project3DMutate(tempPoint.x, tempPoint.y, tempPoint.z, centerX, centerY, tempProj);
@@ -591,7 +591,7 @@ export function NeuralFractalBackground() {
       ctx.moveTo(-pulseLength / 2, 0);
       ctx.lineTo(pulseLength / 2, 0);
       ctx.stroke();
-      
+
       // Localized glow
       ctx.globalCompositeOperation = 'lighter';
       const glowGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, dotSize * 4);
@@ -623,12 +623,12 @@ export function NeuralFractalBackground() {
       }
 
       const deltaTime = time - lastTimeRef.current;
-      
+
       if (deltaTime < interval) {
         animationFrameId = requestAnimationFrame(animate);
         return;
       }
-      
+
       lastTimeRef.current = time - (deltaTime % interval);
 
       // Adjust physics for time delta (normalized to 60fps)
@@ -647,21 +647,21 @@ export function NeuralFractalBackground() {
 
       // Use actual time for smooth animation regardless of framerate
       const animTime = Date.now() * 0.0001;
-      
+
       // Interactive camera with smoothing
       const targetCameraAngleY = mouseRef.current.x * 0.5 + 0.002 * timeScale; // Add constant rotation
       const targetCameraAngleX = mouseRef.current.y * 0.2 + Math.sin(animTime * 0.6) * 0.2;
-      
+
       // Smooth interpolation (lerp)
       const lerpFactor = 0.05 * timeScale;
       const prevAngleY = cameraAngleY;
       cameraAngleY += (targetCameraAngleY - cameraAngleY) * lerpFactor;
       cameraAngleX += (targetCameraAngleX - cameraAngleX) * lerpFactor;
-      
+
       // Calculate rotation velocity to tie particle speed to turning pace
       const rotationVelocity = Math.abs(cameraAngleY - prevAngleY) / timeScale;
       const speedMultiplier = 1 + rotationVelocity * 150; // Boost speed based on turning
-      
+
       cameraZ = Math.sin(animTime * 0.4) * 200;
 
       // Pre-calculate trig values
@@ -672,8 +672,8 @@ export function NeuralFractalBackground() {
 
       // Sort segments by depth and cache transformed points
       // We use a reusable array to avoid GC, resizing if necessary
-      const renderableSegments: { 
-        index: number; 
+      const renderableSegments: {
+        index: number;
         avgZ: number;
         p1: { x: number, y: number, z: number };
         p2: { x: number, y: number, z: number };
@@ -683,13 +683,13 @@ export function NeuralFractalBackground() {
         // Transform p1
         transformPointMutate(segment.x1, segment.y1, segment.z1, cosY, sinY, cosX, sinX, cameraZ, tempPoint);
         const p1 = { x: tempPoint.x, y: tempPoint.y, z: tempPoint.z };
-        
+
         // Transform p2
         transformPointMutate(segment.x2, segment.y2, segment.z2, cosY, sinY, cosX, sinX, cameraZ, tempPoint);
         const p2 = { x: tempPoint.x, y: tempPoint.y, z: tempPoint.z };
-        
+
         const avgZ = (p1.z + p2.z) / 2;
-        
+
         // Culling: only add if at least one point is in front of the camera (approx)
         if (p1.z > -500 || p2.z > -500) {
           renderableSegments.push({ index, avgZ, p1, p2 });
@@ -708,7 +708,7 @@ export function NeuralFractalBackground() {
 
       renderableSegments.forEach(({ index, p1, p2 }) => {
         const segment = segments[index];
-        
+
         // Project p1
         project3DMutate(p1.x, p1.y, p1.z, centerX, centerY, tempProj);
         const x1 = tempProj.x;
@@ -732,11 +732,11 @@ export function NeuralFractalBackground() {
 
         const avgZ = (p1.z + p2.z) / 2;
         const depthFactor = Math.max(0.05, Math.min(1, 1 - avgZ / 2000));
-        
+
         // Quantize opacity to 0.05 steps to allow batching
         const rawOpacity = segment.baseOpacity * depthFactor * 0.8;
         const quantizedOpacity = Math.round(rawOpacity * 20) / 20;
-        
+
         // Quantize width to 0.1 steps - Activity removed to keep network stable
         const rawWidth = Math.max(0.5, segment.thickness * scale1);
         const quantizedWidth = Math.round(rawWidth * 10) / 10;
@@ -760,11 +760,11 @@ export function NeuralFractalBackground() {
         ctx.lineTo(x2, y2);
 
         // Segment-wide glow removed to prevent breaking the connected effect
-        
+
         // Time-based decay still happens to track segment usage if needed
         segment.activity *= Math.pow(0.94, timeScale);
       });
-      
+
       if (pendingBatch) {
         ctx.stroke();
       }
@@ -787,29 +787,29 @@ export function NeuralFractalBackground() {
             resetParticle(particle);
             return;
           }
-          
+
           const connectedSegments = currentSegment.connections;
           const freeConnections = connectedSegments.filter(idx => !segments[idx].isOccupied);
 
           if (freeConnections.length > 0 && Math.random() < 0.95) {
             const nextSegmentIndex = freeConnections[Math.floor(Math.random() * freeConnections.length)];
             const nextSegment = segments[nextSegmentIndex];
-            
+
             if (nextSegment) {
               nextSegment.isOccupied = true; // Occupy next segment
               const distToStart = Math.sqrt(
-                Math.pow(nextSegment.x1 - particle.toX, 2) + 
-                Math.pow(nextSegment.y1 - particle.toY, 2) + 
+                Math.pow(nextSegment.x1 - particle.toX, 2) +
+                Math.pow(nextSegment.y1 - particle.toY, 2) +
                 Math.pow(nextSegment.z1 - particle.toZ, 2)
               );
               const distToEnd = Math.sqrt(
-                Math.pow(nextSegment.x2 - particle.toX, 2) + 
-                Math.pow(nextSegment.y2 - particle.toY, 2) + 
+                Math.pow(nextSegment.x2 - particle.toX, 2) +
+                Math.pow(nextSegment.y2 - particle.toY, 2) +
                 Math.pow(nextSegment.z2 - particle.toZ, 2)
               );
-              
+
               const startFromBeginning = distToStart < distToEnd;
-              
+
               // Mutate existing particle instead of pushing new one
               particle.fromX = startFromBeginning ? nextSegment.x1 : nextSegment.x2;
               particle.fromY = startFromBeginning ? nextSegment.y1 : nextSegment.y2;
@@ -821,7 +821,7 @@ export function NeuralFractalBackground() {
               particle.speed = particle.speed * (0.95 + Math.random() * 0.1);
               particle.opacity = particle.opacity * 0.98;
               particle.segmentIndex = nextSegmentIndex;
-              
+
               // If opacity gets too low, reset to a random segment to keep it fresh
               if (particle.opacity < 0.1) {
                 resetParticle(particle);

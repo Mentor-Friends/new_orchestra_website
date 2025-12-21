@@ -1,293 +1,250 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Music, Shield, Coins, Building2, Code, Search, Key, Send, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Shield, Coins, Code, Search, Key, CheckCircle2, Building2, Zap } from 'lucide-react';
 
 export function Developers() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 mt-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-5xl mx-auto"
-          >
-            {/* Main Heading */}
+      {/* Hero Section - Split Layout */}
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Side - Text Content */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <h1 className="mb-6">
+              <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">For Developers</p>
+              <h1 className="mb-6 text-left">
                 Conduct the Impossible.
               </h1>
-            </motion.div>
+              <p className="text-amber-300 text-xl mb-6">
+                Silence the noise. Deploy the symphony.
+              </p>
+              <p className="text-amber-100/70 text-lg mb-8 leading-relaxed">
+                The world's first arsenal of verified autonomous agents. 100% audited for security.
+                Benchmarked for lethal precision. You don't just build software anymore, you orchestrate
+                a workforce that never sleeps.
+              </p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8 text-cyan-300 text-xl text-center"
-            >
-              Silence the noise. Deploy the symphony.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mb-12 max-w-3xl mx-auto text-white/80 text-lg leading-relaxed text-center"
-            >
-              The world's first arsenal of verified autonomous agents. 100% audited for security. Benchmarked for lethal precision. You don't just build software anymore, you orchestrate a workforce that never sleeps.
-            </motion.p>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex items-center justify-center"
-            >
-              <a
-                href="#marketplace"
-                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-blue-600/30 hover:scale-105"
-              >
-                Enter the Orchestra
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Harmonized Automation Section */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">Harmonized Automation</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1: Curated Performance */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative group"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
-                <div className="text-4xl mb-4">🎻</div>
-                <h3 className="text-xl font-bold mb-4 text-white">Curated Performance</h3>
-                <p className="text-white/70 leading-relaxed">
-                  Just as an orchestra requires every musician to be a master, A2A requires every agent to be flawless. We do not list experimental code. Every agent here is audited, tested, and proven to perform complex tasks without hallucination.
-                </p>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="#marketplace"
+                  className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
+                >
+                  Enter the Orchestra
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+                </a>
+                <a
+                  href="#workflow"
+                  className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
+                >
+                  How It Works
+                </a>
               </div>
             </motion.div>
 
-            {/* Card 2: Secure Composition */}
+            {/* Right Side - Visual */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative group"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative hidden lg:block"
             >
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
-                <div className="text-4xl mb-4">🎼</div>
-                <h3 className="text-xl font-bold mb-4 text-white">Secure Composition</h3>
-                <p className="text-white/70 leading-relaxed">
-                  Your data is the sheet music, it is yours alone. Agents execute in isolated, ephemeral environments. Once the note is played (the task is done), the environment dissolves. Zero data retention, absolute privacy.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Card 3: Universal Token Standard */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative group"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
-                <div className="text-4xl mb-4">🪙</div>
-                <h3 className="text-xl font-bold mb-4 text-white">Universal Token Standard</h3>
-                <p className="text-white/70 leading-relaxed">
-                  A single currency for a symphony of tools. Our 30% token model means you pay one standardized rate across all agents, only for successful executions. No fragmented subscriptions, just pure utility.
-                </p>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-amber-600/20 to-amber-800/20 rounded-3xl blur-2xl" />
+                <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-8">
+                  <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=400&h=400&fit=crop" alt="Orchestra" className="w-full h-full object-cover opacity-80" />
+                  </div>
+                  <div className="text-center text-amber-100/60">Orchestrate Your Workforce</div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* The Fair-Trade Economy Section */}
-      <section className="py-24 relative">
+      {/* Harmonized Automation - 3 Column Grid */}
+      <section className="py-24 lg:py-32 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Centered Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="mb-6">The Fair-Trade Economy</h2>
+            <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Why A2A Orchestra</p>
+            <h2 className="mb-6">
+              Harmonized Automation
+            </h2>
           </motion.div>
 
+          {/* 3 Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                image: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=400&fit=crop',
+                title: 'Curated Performance',
+                description: 'Just as an orchestra requires every musician to be a master, A2A requires every agent to be flawless. We do not list experimental code. Every agent here is audited, tested, and proven to perform complex tasks without hallucination.'
+              },
+              {
+                image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
+                title: 'Secure Composition',
+                description: 'Your data is the sheet music, it is yours alone. Agents execute in isolated, ephemeral environments. Once the note is played (the task is done), the environment dissolves. Zero data retention, absolute privacy.'
+              },
+              {
+                image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=400&fit=crop',
+                title: 'Universal Token Standard',
+                description: 'A single currency for a symphony of tools. Our 30% token model means you pay one standardized rate across all agents, only for successful executions. No fragmented subscriptions, just pure utility.'
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group relative"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+                <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 p-8 h-full transition-all duration-300">
+                  <div className="w-16 h-16 mb-6 rounded-full overflow-hidden">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
+                  <p className="text-amber-100/70 leading-relaxed">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fair-Trade Economy - Split Layout */}
+      <section className="py-24 lg:py-32 relative">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Centered Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Economics</p>
+            <h2 className="mb-6">
+              The Fair-Trade Economy
+            </h2>
+          </motion.div>
+
+          {/* 2 Column Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* For the Enterprise */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative group"
+              transition={{ duration: 0.6 }}
+              className="group relative"
             >
-              <div className="absolute -inset-1 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
-                <div className="text-4xl mb-4">🏢</div>
-                <h3 className="text-xl font-bold mb-4 text-white">For the Enterprise</h3>
-                <h4 className="text-lg font-semibold mb-3 text-cyan-300">Pay Per Success</h4>
-                <p className="text-white/70 leading-relaxed mb-4">
+              <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-700/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+              <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 p-8 h-full transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl overflow-hidden mb-6">
+                  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop" alt="Enterprise" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="text-xl font-bold text-amber-100 mb-2">For the Enterprise</h3>
+                <p className="text-amber-300 font-semibold mb-4">Pay Per Success</p>
+                <p className="text-amber-100/70 leading-relaxed mb-6">
                   You never pay for idle time. 1 Token = 1 Successful Execution. If the agent hallucinates or fails, the cost is 0.
                 </p>
-                <p className="text-green-400 font-semibold">Result: Lower OpEx</p>
+                <div className="flex items-center gap-2 text-green-400 font-semibold">
+                  <CheckCircle2 size={20} />
+                  Result: Lower OpEx
+                </div>
               </div>
             </motion.div>
 
             {/* For the Engineer */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative group"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-br from-purple-600/30 to-pink-600/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              <div className="relative bg-[#0f0f0f]/80 backdrop-blur-xl rounded-3xl border border-white/10 group-hover:border-white/20 p-8 transition-all duration-300 h-full">
-                <div className="text-4xl mb-4">👨‍💻</div>
-                <h3 className="text-xl font-bold mb-4 text-white">For the Engineer</h3>
-                <h4 className="text-lg font-semibold mb-3 text-purple-300">Meritocratic Payouts</h4>
-                <p className="text-white/70 leading-relaxed mb-4">
-                  We pay developers 70% of every token. This industry-leading split ensures the world's best talent builds for A2A.
-                </p>
-                <p className="text-green-400 font-semibold">Result: Superior Tool Quality</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Orchestrating Your Workflow Section */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">Orchestrating Your Workflow</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Step 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative"
+              className="group relative"
             >
-              <div className="bg-[#0f0f0f]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-6 h-full">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-4">
-                  <Search size={20} className="text-white" />
+              <div className="absolute -inset-1 bg-gradient-to-br from-amber-700/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+              <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 p-8 h-full transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl overflow-hidden mb-6">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=400&fit=crop" alt="Engineer" className="w-full h-full object-cover" />
                 </div>
-                <div className="text-sm text-blue-400 mb-2">Step 1</div>
-                <h3 className="text-lg font-bold mb-3 text-white">Select Instruments</h3>
-                <p className="text-white/70 text-sm">
-                  Browse the marketplace for specific capabilities—Finance, Construction, Legal.
+                <h3 className="text-xl font-bold text-amber-100 mb-2">For the Engineer</h3>
+                <p className="text-amber-300 font-semibold mb-4">Meritocratic Payouts</p>
+                <p className="text-amber-100/70 leading-relaxed mb-6">
+                  We pay developers 70% of every token. This industry-leading split ensures the world's best talent builds for A2A.
                 </p>
-              </div>
-            </motion.div>
-
-            {/* Step 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="bg-[#0f0f0f]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-6 h-full">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-4">
-                  <Coins size={20} className="text-white" />
+                <div className="flex items-center gap-2 text-green-400 font-semibold">
+                  <CheckCircle2 size={20} />
+                  Result: Superior Tool Quality
                 </div>
-                <div className="text-sm text-blue-400 mb-2">Step 2</div>
-                <h3 className="text-lg font-bold mb-3 text-white">Acquire Tokens</h3>
-                <p className="text-white/70 text-sm">
-                  Load your account with A2A Tokens. One balance, universal access.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Step 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative"
-            >
-              <div className="bg-[#0f0f0f]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-6 h-full">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-4">
-                  <Key size={20} className="text-white" />
-                </div>
-                <div className="text-sm text-blue-400 mb-2">Step 3</div>
-                <h3 className="text-lg font-bold mb-3 text-white">Connect via API</h3>
-                <p className="text-white/70 text-sm">
-                  Use our unified SDK to send your "sheet music" (data) to the agent.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Step 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="bg-[#0f0f0f]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-6 h-full">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center mb-4">
-                  <CheckCircle2 size={20} className="text-white" />
-                </div>
-                <div className="text-sm text-blue-400 mb-2">Step 4</div>
-                <h3 className="text-lg font-bold mb-3 text-white">Receive Performance</h3>
-                <p className="text-white/70 text-sm">
-                  Get structured data back. Integrate it directly into your systems.
-                </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 relative">
+      {/* Workflow Section - 4 Steps */}
+      <section id="workflow" className="py-24 lg:py-32 relative">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Centered Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Getting Started</p>
+            <h2 className="mb-6">
+              Orchestrating Your Workflow
+            </h2>
+          </motion.div>
+
+          {/* 4 Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop', step: '01', title: 'Select Instruments', description: 'Browse the marketplace for specific capabilities—Finance, Construction, Legal.' },
+              { image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=400&fit=crop', step: '02', title: 'Acquire Tokens', description: 'Load your account with A2A Tokens. One balance, universal access.' },
+              { image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=400&fit=crop', step: '03', title: 'Connect via API', description: 'Use our unified SDK to send your "sheet music" (data) to the agent.' },
+              { image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=400&fit=crop', step: '04', title: 'Receive Performance', description: 'Get structured data back. Integrate it directly into your systems.' }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative"
+              >
+                <div className="bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-8 h-full">
+                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-6">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="text-amber-400 font-bold text-sm mb-2">STEP {item.step}</div>
+                  <h3 className="text-lg font-bold text-amber-100 mb-3">{item.title}</h3>
+                  <p className="text-amber-100/70">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 lg:py-32 relative">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -297,14 +254,18 @@ export function Developers() {
             className="max-w-4xl mx-auto"
           >
             <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-xl opacity-30" />
-              <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-3xl border border-white/20 p-12 lg:p-16 text-center">
-                <h2 className="mb-8">
-                  Ready to start the music?
+              <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-700 rounded-3xl blur-xl opacity-30" />
+              <div className="relative bg-gradient-to-br from-[#1a1208] to-[#0a0804] rounded-3xl border border-amber-500/30 p-12 lg:p-16 text-center">
+                <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Start Building</p>
+                <h2 className="mb-6">
+                  Ready to Start the Music?
                 </h2>
+                <p className="text-amber-100/70 mb-10 max-w-2xl mx-auto text-lg">
+                  Join the orchestra and start building with verified, enterprise-grade AI agents today.
+                </p>
                 <a
                   href="#marketplace"
-                  className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-300 shadow-lg shadow-blue-600/30 hover:scale-105"
+                  className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 shadow-lg shadow-amber-600/30 hover:scale-105 text-amber-950 font-semibold"
                 >
                   Enter the Marketplace
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />

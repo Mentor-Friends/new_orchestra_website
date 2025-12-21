@@ -27,27 +27,28 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
       <div className="max-w-7xl mx-auto">
-        {/* iOS-style glassmorphism pill container */}
+        {/* Glassmorphism pill container with gold tint */}
         <div className={`
           flex items-center justify-between h-14 px-4 
           rounded-2xl transition-all duration-500
           ${scrolled
-            ? 'bg-white/10 backdrop-blur-2xl border border-white/20 shadow-lg shadow-black/20'
-            : 'bg-white/5 backdrop-blur-xl border border-white/10'
+            ? 'bg-amber-950/20 backdrop-blur-2xl border border-amber-500/20 shadow-lg shadow-black/20'
+            : 'bg-amber-950/10 backdrop-blur-xl border border-amber-500/10'
           }
         `}>
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl blur-md opacity-60 group-hover:opacity-100 transition-opacity" />
-              <div className="relative w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white text-sm font-medium">A2A</span>
-              </div>
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="A2A Orchestra"
+                className="w-10 h-10 object-cover rounded-full"
+              />
             </div>
-            <span className="hidden sm:block font-medium text-white/90">Orchestra</span>
+            <span className="hidden sm:block font-medium text-amber-100">A2A Orchestra</span>
           </a>
 
-          {/* Desktop Navigation - iOS pill-style buttons */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <a
@@ -56,8 +57,8 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
                 className={`
                   px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300
                   ${isActive(item.href)
-                    ? 'bg-white/15 text-white shadow-inner border border-white/20'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                    ? 'bg-amber-500/20 text-amber-200 shadow-inner border border-amber-500/30'
+                    : 'text-amber-100/70 hover:text-amber-100 hover:bg-amber-500/10'
                   }
                 `}
               >
@@ -68,55 +69,56 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
 
           {/* Right side actions */}
           <div className="hidden lg:flex items-center gap-2">
-            {/* iOS-style pill button for Sign Up */}
+            {/* Gold gradient button for Sign Up */}
             <a
               href="#signup"
               className="
                 px-5 py-2 rounded-xl text-sm font-medium
-                bg-gradient-to-r from-blue-500 to-purple-500 
-                hover:from-blue-400 hover:to-purple-400
-                shadow-lg shadow-blue-500/30
-                border border-white/20
-                transition-all duration-300 hover:scale-105 hover:shadow-blue-500/40
+                bg-gradient-to-r from-amber-500 to-amber-600 
+                hover:from-amber-400 hover:to-amber-500
+                shadow-lg shadow-amber-500/30
+                border border-amber-400/30
+                text-amber-950 font-semibold
+                transition-all duration-300 hover:scale-105 hover:shadow-amber-500/40
               "
             >
               Sign Up
             </a>
-            {/* iOS-style circular button for Profile */}
+            {/* Profile button */}
             <a
               href="#profile"
               className="
                 p-2.5 rounded-xl 
-                bg-white/10 hover:bg-white/20 
-                border border-white/10 hover:border-white/20
+                bg-amber-500/10 hover:bg-amber-500/20 
+                border border-amber-500/20 hover:border-amber-500/30
                 transition-all duration-300
               "
               title="Profile"
             >
-              <User size={18} className="text-white/80" />
+              <User size={18} className="text-amber-200/80" />
             </a>
           </div>
 
-          {/* Mobile Menu Button - iOS style */}
+          {/* Mobile Menu Button */}
           <button
             className="
               lg:hidden p-2 rounded-xl 
-              bg-white/10 hover:bg-white/20 
-              border border-white/10
+              bg-amber-500/10 hover:bg-amber-500/20 
+              border border-amber-500/20
               transition-all duration-200
             "
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={22} className="text-white" /> : <Menu size={22} className="text-white" />}
+            {mobileMenuOpen ? <X size={22} className="text-amber-100" /> : <Menu size={22} className="text-amber-100" />}
           </button>
         </div>
 
-        {/* Mobile Menu - iOS style dropdown */}
+        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="
             lg:hidden mt-2 p-4 
-            bg-white/10 backdrop-blur-2xl 
-            rounded-2xl border border-white/20 
+            bg-amber-950/30 backdrop-blur-2xl 
+            rounded-2xl border border-amber-500/20 
             shadow-xl shadow-black/20
           ">
             <div className="space-y-1">
@@ -127,8 +129,8 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
                   className={`
                     block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200
                     ${isActive(item.href)
-                      ? 'bg-white/15 text-white border border-white/20'
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                      ? 'bg-amber-500/20 text-amber-200 border border-amber-500/30'
+                      : 'text-amber-100/70 hover:text-amber-100 hover:bg-amber-500/10'
                     }
                   `}
                   onClick={() => setMobileMenuOpen(false)}
@@ -136,13 +138,14 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
                   {item.label}
                 </a>
               ))}
-              <div className="pt-2 border-t border-white/10 mt-2 space-y-2">
+              <div className="pt-2 border-t border-amber-500/20 mt-2 space-y-2">
                 <a
                   href="#signup"
                   className="
                     block px-4 py-3 rounded-xl text-sm font-medium text-center
-                    bg-gradient-to-r from-blue-500 to-purple-500 
-                    border border-white/20 shadow-lg shadow-blue-500/20
+                    bg-gradient-to-r from-amber-500 to-amber-600 
+                    border border-amber-400/30 shadow-lg shadow-amber-500/20
+                    text-amber-950 font-semibold
                   "
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -152,7 +155,7 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
                   href="#profile"
                   className="
                     flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium
-                    text-white/70 hover:text-white hover:bg-white/10
+                    text-amber-100/70 hover:text-amber-100 hover:bg-amber-500/10
                     transition-all duration-200
                   "
                   onClick={() => setMobileMenuOpen(false)}
