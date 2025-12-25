@@ -1,22 +1,56 @@
 import { motion } from 'motion/react';
+import { useState, useEffect } from 'react';
 import { Shield, Zap, Users, ArrowRight } from 'lucide-react';
 
 export function About() {
+    // Scroll-based fade effect for hero content
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Calculate opacity: fade out between 0-500px scroll for smooth, gradual fade
+    const heroOpacity = Math.max(0, 1 - scrollY / 500);
+
     return (
         <div className="min-h-screen">
             {/* Hero Section - Centered Layout */}
             <section className="relative min-h-screen flex items-center overflow-hidden">
-                <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 py-32 text-center">
+                <div
+                    className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 py-32 text-center"
+                    style={{
+                        opacity: heroOpacity,
+                        transform: `translateY(${scrollY * 0.3}px)`,
+                        transition: 'opacity 0.1s ease-out'
+                    }}
+                >
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
                         <p className="text-amber-400 font-medium mb-6 uppercase tracking-wide text-sm">About Us</p>
-                        <h1 className="mb-8">
+                        <h1
+                            className="mb-8"
+                            style={{
+                                textShadow: `
+                                    0 0 10px rgba(16, 185, 129, 0.4),
+                                    0 0 20px rgba(16, 185, 129, 0.3),
+                                    0 0 40px rgba(16, 185, 129, 0.2),
+                                    0 0 80px rgba(16, 185, 129, 0.15),
+                                    0 0 120px rgba(16, 185, 129, 0.1)
+                                `
+                            }}
+                        >
                             The Conductor of the Digital Workforce
                         </h1>
-                        <p className="text-amber-100/70 text-xl mb-10 leading-relaxed max-w-3xl mx-auto">
+                        <p className="text-amber-100/70 text-xl mb-10 leading-relaxed mx-auto text-center">
                             The conductor of the digital workforce. The architect of certainty. The bridge
                             between innovation and enterprise. We are the active force that organizes the noise into signal.
                         </p>
@@ -92,8 +126,8 @@ export function About() {
                             >
                                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                                 <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 p-8 h-full transition-all duration-300">
-                                    <div className="w-14 h-14 mb-4 rounded-full overflow-hidden">
-                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
+                                    <div className="photo-immersive-thumb w-14 h-14 mb-4 rounded-full">
+                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-full" />
                                     </div>
                                     <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
                                     <p className="text-amber-100/70 leading-relaxed">{item.description}</p>
@@ -148,8 +182,8 @@ export function About() {
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
                                 className="text-center"
                             >
-                                <div className="w-16 h-16 rounded-2xl overflow-hidden mx-auto mb-6">
-                                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                                <div className="photo-immersive-thumb w-16 h-16 rounded-2xl mx-auto mb-6">
+                                    <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-2xl" />
                                 </div>
                                 <h3 className="text-xl font-bold text-amber-100 mb-3">{item.title}</h3>
                                 <p className="text-amber-100/70">{item.description}</p>
@@ -172,7 +206,7 @@ export function About() {
                         <div className="relative">
                             <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-700 rounded-3xl blur-xl opacity-30" />
                             <div className="relative bg-gradient-to-br from-[#1a1208] to-[#0a0804] rounded-3xl border border-amber-500/30 p-12 lg:p-16 text-center">
-                                <h2 className="mb-6 bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
+                                <h2 className="mb-6 text-white text-glow">
                                     We Are A2A Orchestra.
                                 </h2>
                                 <p className="text-amber-100/70 mb-10 max-w-2xl mx-auto text-lg">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Navigation } from './components/Navigation';
 import { NeuralFractalBackground } from './components/NeuralFractalBackground';
+import { ScrollFadeProvider } from './components/ScrollFadeProvider';
 import { MainLanding } from './pages/MainLanding';
 import { ProductDevelopment } from './pages/ProductDevelopment';
 import { Developers } from './pages/Developers';
@@ -11,6 +12,7 @@ import { Blogs } from './pages/Blogs';
 import { Docs } from './pages/Docs';
 import { Invest } from './pages/Invest';
 import { Profile } from './pages/Profile';
+import { SignIn } from './pages/SignIn';
 import { TechBenefits } from './pages/TechBenefits';
 import { Marketplace } from './pages/Marketplace';
 import { AgentDetail } from './pages/AgentDetail';
@@ -34,8 +36,8 @@ export default function App() {
         const handleHashChange = () => {
             const hash = window.location.hash.slice(1);
             if (hash) {
-                // Handle agent detail pages
-                if (hash.startsWith('agent-')) {
+                // Handle agent detail pages (agent-{id}) but NOT agent-builders
+                if (hash.startsWith('agent-') && hash !== 'agent-builders') {
                     setCurrentPage('agent-detail');
                 } else {
                     setCurrentPage(hash);
@@ -79,6 +81,9 @@ export default function App() {
                 return <Marketplace />;
             case 'agent-detail':
                 return <AgentDetail />;
+            case 'signin':
+            case 'signup':
+                return <SignIn />;
             default:
                 return <MainLanding />;
         }

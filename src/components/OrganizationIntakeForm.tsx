@@ -97,36 +97,6 @@ export function OrganizationIntakeForm() {
 
   return (
     <div className="max-w-4xl mx-auto">
-      {/* Progress Bar */}
-      <div className="mb-12">
-        <div className="flex items-center justify-between mb-4">
-          {[1, 2, 3, 4].map((step) => (
-            <div key={step} className="flex items-center flex-1">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${step <= currentStep
-                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-amber-950'
-                    : 'bg-amber-500/10 text-amber-100/40 border border-amber-500/20'
-                  }`}
-              >
-                {step < currentStep ? (
-                  <CheckCircle2 size={20} />
-                ) : (
-                  <span>{step}</span>
-                )}
-              </div>
-              {step < 4 && (
-                <div
-                  className={`flex-1 h-1 mx-2 transition-all duration-300 ${step < currentStep ? 'bg-gradient-to-r from-amber-500 to-amber-600' : 'bg-amber-500/20'
-                    }`}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="text-center">
-          <p className="text-amber-100/60 text-sm">Step {currentStep} of {totalSteps}</p>
-        </div>
-      </div>
 
       <form onSubmit={handleSubmit}>
         <AnimatePresence mode="wait">
@@ -222,7 +192,7 @@ export function OrganizationIntakeForm() {
                     <select
                       value={formData.organizationSize}
                       onChange={(e) => updateFormData('organizationSize', e.target.value)}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                      className="w-full px-4 py-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg focus:outline-none focus:border-emerald-400 transition-colors text-emerald-100"
                       required
                     >
                       <option value="">Select size</option>
@@ -518,8 +488,8 @@ export function OrganizationIntakeForm() {
                   type="button"
                   onClick={prevStep}
                   className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${currentStep === 1
-                      ? 'opacity-0 pointer-events-none'
-                      : 'bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 hover:border-amber-500/40 text-amber-100'
+                    ? 'opacity-0 pointer-events-none'
+                    : 'bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 hover:border-amber-500/40 text-amber-100'
                     }`}
                 >
                   <ArrowLeft size={18} />
@@ -533,6 +503,7 @@ export function OrganizationIntakeForm() {
                     className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 shadow-lg shadow-amber-600/20 text-amber-950 font-semibold"
                   >
                     Next
+                    <span className="text-amber-950/70 font-normal">{currentStep}/{totalSteps}</span>
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                   </button>
                 ) : (

@@ -44,6 +44,8 @@ export function NeuralFractalBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const lastTimeRef = useRef<number>(0);
   const mouseRef = useRef({ x: 0, y: 0 });
+  const mouseTargetRef = useRef({ x: 0, y: 0 });
+  const isMouseOnPageRef = useRef(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -61,23 +63,31 @@ export function NeuralFractalBackground() {
     let cameraZ = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = {
+      isMouseOnPageRef.current = true;
+      mouseTargetRef.current = {
         x: (e.clientX / window.innerWidth) * 2 - 1,
         y: (e.clientY / window.innerHeight) * 2 - 1
       };
     };
 
+    const handleMouseLeave = () => {
+      // Set target to center when mouse leaves - actual position will smoothly interpolate
+      isMouseOnPageRef.current = false;
+      mouseTargetRef.current = { x: 0, y: 0 };
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      // Use documentElement for more accurate full viewport dimensions
+      const width = Math.max(document.documentElement.clientWidth, window.innerWidth);
+      const height = Math.max(document.documentElement.clientHeight, window.innerHeight);
 
       canvas.width = width * dpr;
       canvas.height = height * dpr;
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
+      // Don't override CSS dimensions - let the style prop handle it
 
       ctx.scale(dpr, dpr);
 
@@ -114,10 +124,10 @@ export function NeuralFractalBackground() {
         y2: endY,
         z2: endZ,
         depth,
-        baseOpacity: 0.08 + (maxDepth - depth) * 0.04,
+        baseOpacity: 0.12 + (maxDepth - depth) * 0.05,
         activity: 0,
         color,
-        thickness: 0.8 + (maxDepth - depth) * 0.4,
+        thickness: 1.5 + (maxDepth - depth) * 0.6,
         connections: [],
         isOccupied: false,
       });
@@ -175,7 +185,7 @@ export function NeuralFractalBackground() {
       segments = [];
       nodes = [];
 
-      const colors = ['gold', 'amber', 'bronze'];
+      const colors = ['emerald', 'teal', 'forest'];
       const numFractals = 15; // Reduced for performance
       const spread = Math.max(canvas.width, canvas.height) * 0.8;
 
@@ -408,27 +418,27 @@ export function NeuralFractalBackground() {
 
     const getLineColor = (color: string, opacity: number) => {
       switch (color) {
-        case 'gold':
-          return `rgba(251, 191, 36, ${opacity})`; // amber-400
-        case 'amber':
-          return `rgba(217, 119, 6, ${opacity})`; // amber-600
-        case 'bronze':
-          return `rgba(180, 83, 9, ${opacity})`; // amber-700
+        case 'emerald':
+          return `rgba(0, 45, 0, ${opacity})`; // very deep green
+        case 'teal':
+          return `rgba(0, 35, 0, ${opacity})`; // darker deep green
+        case 'forest':
+          return `rgba(0, 29, 0, ${opacity})`; // #001D00
         default:
-          return `rgba(245, 158, 11, ${opacity})`; // amber-500
+          return `rgba(0, 40, 0, ${opacity})`; // deep green
       }
     };
 
     const getLineGlowColor = (color: string, opacity: number) => {
       switch (color) {
-        case 'gold':
-          return `rgba(253, 230, 138, ${opacity})`; // amber-200
-        case 'amber':
-          return `rgba(252, 211, 77, ${opacity})`; // amber-300
-        case 'bronze':
-          return `rgba(251, 191, 36, ${opacity})`; // amber-400
+        case 'emerald':
+          return `rgba(0, 100, 0, ${opacity})`; // brighter deep green for glow
+        case 'teal':
+          return `rgba(0, 90, 0, ${opacity})`; // glow green
+        case 'forest':
+          return `rgba(0, 80, 0, ${opacity})`; // glow forest
         default:
-          return `rgba(254, 243, 199, ${opacity})`; // amber-100
+          return `rgba(0, 70, 0, ${opacity})`; // glow default
       }
     };
 
@@ -513,7 +523,7 @@ export function NeuralFractalBackground() {
       const glowColor = getLineGlowColor(node.color, 0.3 * depthFactor);
       gradient.addColorStop(0, `rgba(255, 255, 255, ${0.6 * depthFactor})`);
       gradient.addColorStop(0.4, glowColor);
-      gradient.addColorStop(1, 'rgba(217, 119, 6, 0)'); // amber-600 with 0 alpha
+      gradient.addColorStop(1, 'rgba(0, 29, 0, 0)'); // #001D00 with 0 alpha
 
       ctx.fillStyle = gradient;
       ctx.beginPath();
@@ -577,12 +587,12 @@ export function NeuralFractalBackground() {
       ctx.translate(curX, curY);
       ctx.rotate(angle);
 
-      // Localized thickening (the 'pulse')
+      // Localized thickening (the 'pulse') - now with green gradient
       // We draw it centered at (0,0) which is the current particle position
       const pulseGradient = ctx.createLinearGradient(-pulseLength / 2, 0, pulseLength / 2, 0);
-      pulseGradient.addColorStop(0, `rgba(255, 255, 255, 0)`);
-      pulseGradient.addColorStop(0.5, getLineColor(segment.color, finalOpacity * 0.5));
-      pulseGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+      pulseGradient.addColorStop(0, `rgba(16, 185, 129, 0)`);
+      pulseGradient.addColorStop(0.5, `rgba(16, 185, 129, ${finalOpacity * 0.7})`);
+      pulseGradient.addColorStop(1, `rgba(16, 185, 129, 0)`);
 
       ctx.strokeStyle = pulseGradient;
       ctx.lineWidth = dotSize * 2.2; // Noticeably thicker but localized
@@ -592,10 +602,10 @@ export function NeuralFractalBackground() {
       ctx.lineTo(pulseLength / 2, 0);
       ctx.stroke();
 
-      // Localized glow
+      // Localized glow - green
       ctx.globalCompositeOperation = 'lighter';
       const glowGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, dotSize * 4);
-      glowGradient.addColorStop(0, getLineGlowColor(segment.color, finalOpacity * 0.4));
+      glowGradient.addColorStop(0, `rgba(16, 185, 129, ${finalOpacity * 0.5})`);
       glowGradient.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = glowGradient;
       ctx.beginPath();
@@ -603,8 +613,8 @@ export function NeuralFractalBackground() {
       ctx.fill();
       ctx.globalCompositeOperation = 'source-over';
 
-      // Sharp white dot (the packet)
-      ctx.fillStyle = `rgba(255, 255, 255, ${finalOpacity})`;
+      // Bright green dot (the packet) - no more white
+      ctx.fillStyle = `rgba(16, 185, 129, ${finalOpacity})`;
       ctx.beginPath();
       ctx.arc(0, 0, dotSize, 0, Math.PI * 2);
       ctx.fill();
@@ -639,14 +649,22 @@ export function NeuralFractalBackground() {
       // alpha 0.3 at 60fps means retaining 0.7 opacity
       // at 30fps (2x time), we want to retain 0.7^2 = 0.49 opacity -> fade 0.51
       const fadeAlpha = 1 - Math.pow(0.7, timeScale);
+      // Use logical viewport dimensions (not pixel-scaled canvas dimensions)
+      const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth);
+      const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
       ctx.fillStyle = `rgba(10, 10, 10, ${Math.min(1, fadeAlpha)})`;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, viewportWidth, viewportHeight);
 
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
+      const centerX = viewportWidth / 2;
+      const centerY = viewportHeight / 2;
 
       // Use actual time for smooth animation regardless of framerate
       const animTime = Date.now() * 0.0001;
+
+      // Smooth interpolation for mouse position (prevents jumpy animation when leaving page)
+      const mouseSmoothing = isMouseOnPageRef.current ? 0.1 : 0.03; // Slower when returning to center
+      mouseRef.current.x += (mouseTargetRef.current.x - mouseRef.current.x) * mouseSmoothing * timeScale;
+      mouseRef.current.y += (mouseTargetRef.current.y - mouseRef.current.y) * mouseSmoothing * timeScale;
 
       // Interactive camera with smoothing
       const targetCameraAngleY = mouseRef.current.x * 0.5 + 0.002 * timeScale; // Add constant rotation
@@ -726,7 +744,7 @@ export function NeuralFractalBackground() {
         const minY = Math.min(y1, y2);
         const maxY = Math.max(y1, y2);
 
-        if (maxX < 0 || minX > canvas.width || maxY < 0 || minY > canvas.height) {
+        if (maxX < 0 || minX > viewportWidth || maxY < 0 || minY > viewportHeight) {
           return;
         }
 
@@ -847,6 +865,7 @@ export function NeuralFractalBackground() {
     return () => {
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -855,7 +874,7 @@ export function NeuralFractalBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{ background: '#0a0a0a' }}
+      style={{ background: '#0a0a0a', width: '100vw', height: '100vh' }}
     />
   );
 }

@@ -1,107 +1,261 @@
-@import "tailwindcss";
+/* ========================================
+   A2A Orchestra - Typography System
+   Space Grotesk (Headings) + Inter (Body)
+   ======================================== */
 
-@theme {
-  --color-primary: #0a0a0a;
-  --color-secondary: #1a1a1a;
-  --color-accent: #2563eb;
-  --color-accent-purple: #8b5cf6;
-  --color-text: #ffffff;
-  --color-text-muted: #9ca3af;
-  --color-border: #2a2a2a;
-  
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+/* ===== Font Variables ===== */
+:root {
+    --font-heading: 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Green color palette matching neural background */
+    --glow-primary: rgba(16, 185, 129, 0.4);
+    --glow-secondary: rgba(52, 211, 153, 0.3);
+    --gradient-start: #10b981;
+    --gradient-mid: #34d399;
+    --gradient-end: #6ee7b7;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+/* ===== Base Typography ===== */
+html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-sans);
-  background-color: var(--color-primary);
-  color: var(--color-text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* ===== Headings - Space Grotesk ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
 }
 
 h1 {
-  font-size: 4.5rem;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
 }
 
 h2 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
 }
 
 h3 {
-  font-size: 1.875rem;
-  font-weight: 600;
-  line-height: 1.3;
-  margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
 }
 
 h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.4;
-  margin: 0;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 500;
 }
 
+/* ===== Gradient Text Enhancement ===== */
+.text-gradient,
+.gradient-text {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Amber gradient for contrast areas */
+.text-gradient-amber {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== Text Glow Effects ===== */
+.text-glow {
+    text-shadow:
+        0 0 10px var(--glow-primary),
+        0 0 20px var(--glow-secondary),
+        0 0 40px rgba(16, 185, 129, 0.15);
+}
+
+.text-glow-subtle {
+    text-shadow: 0 0 20px var(--glow-secondary);
+}
+
+.text-glow-amber {
+    text-shadow:
+        0 0 10px rgba(245, 158, 11, 0.4),
+        0 0 20px rgba(251, 191, 36, 0.3),
+        0 0 40px rgba(245, 158, 11, 0.15);
+}
+
+/* ===== Uppercase Labels with Letter Spacing ===== */
+.label-uppercase,
+.tracking-label {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* ===== Font Weight Utilities ===== */
+.font-light {
+    font-weight: 300;
+}
+
+.font-normal {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+/* ===== Animated Text Reveal ===== */
+@keyframes text-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes text-glow-pulse {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px var(--glow-primary),
+            0 0 20px var(--glow-secondary);
+    }
+
+    50% {
+        text-shadow:
+            0 0 15px var(--glow-primary),
+            0 0 30px var(--glow-secondary),
+            0 0 50px rgba(16, 185, 129, 0.2);
+    }
+}
+
+.animate-text-reveal {
+    animation: text-reveal 0.8s ease-out forwards;
+}
+
+.animate-glow-pulse {
+    animation: text-glow-pulse 3s ease-in-out infinite;
+}
+
+/* Staggered reveal for multiple elements */
+.reveal-stagger>*:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.reveal-stagger>*:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.reveal-stagger>*:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.reveal-stagger>*:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.reveal-stagger>*:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* ===== Enhanced Body Text ===== */
 p {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  margin: 0;
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75;
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75;
 }
 
-@media (max-width: 1024px) {
-  h1 {
-    font-size: 3rem;
-  }
-  
-  h2 {
-    font-size: 2.5rem;
-  }
+/* ===== Premium Link Styling ===== */
+a:not([class]) {
+    color: var(--gradient-start);
+    text-decoration: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.25rem;
-  }
-  
-  h2 {
-    font-size: 2rem;
-  }
-  
-  h3 {
-    font-size: 1.5rem;
-  }
-  
-  p {
-    font-size: 1rem;
-  }
+a:not([class]):hover {
+    color: var(--gradient-mid);
+    text-shadow: 0 0 10px var(--glow-secondary);
+}
+
+/* Disable ALL hover effects on navigation logo */
+nav a[href="#"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+nav a[href="#"]:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+nav a[href="#"] img {
+    filter: none !important;
+}
+
+nav a[href="#"] img:hover {
+    filter: none !important;
+    transform: none !important;
+}
+
+/* ===== Code/Mono Text ===== */
+code,
+pre,
+.font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+    font-feature-settings: 'liga', 'calt';
+}
+
+/* ===== Selection Styling ===== */
+::selection {
+    background: rgba(16, 185, 129, 0.3);
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(16, 185, 129, 0.3);
+    color: #ffffff;
 }

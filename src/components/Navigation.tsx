@@ -15,7 +15,7 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
     { label: 'For Agent Builders', href: '#agent-builders' },
     { label: 'Tech and Benefits', href: '#tech-benefits' },
     { label: 'Marketplace Platform', href: '#marketplace' },
-    { label: 'About Us', href: '#about' },
+    { label: 'About', href: '#about' },
     { label: 'Founders', href: '#founders' },
   ];
 
@@ -27,25 +27,25 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
       <div className="max-w-7xl mx-auto">
-        {/* Glassmorphism pill container with gold tint */}
+        {/* Glassmorphism pill container */}
         <div className={`
           flex items-center justify-between h-14 px-4 
           rounded-2xl transition-all duration-500
           ${scrolled
-            ? 'bg-amber-950/20 backdrop-blur-2xl border border-amber-500/20 shadow-lg shadow-black/20'
-            : 'bg-amber-950/10 backdrop-blur-xl border border-amber-500/10'
+            ? 'bg-neutral-950/40 backdrop-blur-2xl border border-white/10 shadow-lg shadow-black/20'
+            : 'bg-neutral-950/20 backdrop-blur-xl border border-white/5'
           }
         `}>
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#" className="flex items-center gap-3 no-underline cursor-pointer hover:opacity-100">
             <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
               <img
                 src="/logo.png"
                 alt="A2A Orchestra"
-                className="w-10 h-10 object-cover rounded-full"
+                className="w-10 h-10 object-cover rounded-full hover:brightness-100"
               />
             </div>
-            <span className="hidden sm:block font-medium text-amber-100">A2A Orchestra</span>
+            <span className="hidden sm:block font-medium text-amber-100 hover:text-amber-100">A2A Orchestra</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -57,8 +57,8 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
                 className={`
                   px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300
                   ${isActive(item.href)
-                    ? 'bg-amber-500/20 text-amber-200 shadow-inner border border-amber-500/30'
-                    : 'text-amber-100/70 hover:text-amber-100 hover:bg-amber-500/10'
+                    ? 'bg-white text-black shadow-[0_0_25px_rgba(255,255,255,0.5)] border border-white/50'
+                    : 'text-white/70 hover:text-black hover:bg-white hover:shadow-[0_0_25px_rgba(255,255,255,0.5)]'
                   }
                 `}
               >
@@ -69,33 +69,33 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
 
           {/* Right side actions */}
           <div className="hidden lg:flex items-center gap-2">
-            {/* Gold gradient button for Sign Up */}
+            {/* Sign In button with angelic glow */}
             <a
-              href="#signup"
+              href="#signin"
               className="
                 px-5 py-2 rounded-xl text-sm font-medium
-                bg-gradient-to-r from-amber-500 to-amber-600 
-                hover:from-amber-400 hover:to-amber-500
-                shadow-lg shadow-amber-500/30
-                border border-amber-400/30
-                text-amber-950 font-semibold
-                transition-all duration-300 hover:scale-105 hover:shadow-amber-500/40
+                bg-gradient-to-r from-violet-400 to-violet-500 
+                hover:from-violet-300 hover:to-violet-400
+                shadow-lg shadow-violet-500/30
+                border border-violet-300/30
+                text-white font-semibold
+                transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(167,139,250,0.5)]
               "
             >
-              Sign Up
+              Sign In
             </a>
             {/* Profile button */}
             <a
               href="#profile"
               className="
                 p-2.5 rounded-xl 
-                bg-amber-500/10 hover:bg-amber-500/20 
-                border border-amber-500/20 hover:border-amber-500/30
-                transition-all duration-300
+                bg-violet-500/10 hover:bg-violet-500/20 
+                border border-violet-400/20 hover:border-violet-400/40
+                transition-all duration-300 hover:shadow-[0_0_20px_rgba(167,139,250,0.3)]
               "
               title="Profile"
             >
-              <User size={18} className="text-amber-200/80" />
+              <User size={18} className="text-violet-200/80" />
             </a>
           </div>
 
@@ -140,7 +140,7 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
               ))}
               <div className="pt-2 border-t border-amber-500/20 mt-2 space-y-2">
                 <a
-                  href="#signup"
+                  href="#signin"
                   className="
                     block px-4 py-3 rounded-xl text-sm font-medium text-center
                     bg-gradient-to-r from-amber-500 to-amber-600 
@@ -149,7 +149,7 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
                   "
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Sign Up
+                  Sign In
                 </a>
                 <a
                   href="#profile"

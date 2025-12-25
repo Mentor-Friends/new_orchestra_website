@@ -1,12 +1,35 @@
 import { motion } from 'motion/react';
+import { useState, useEffect } from 'react';
 import { ArrowRight, Shield, Award, DollarSign, CheckCircle2, FileSearch, Cpu, Lock } from 'lucide-react';
 
 export function AgentBuilders() {
+  // Scroll-based fade effect for hero content
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Calculate opacity: fade out between 0-500px scroll for smooth, gradual fade
+  const heroOpacity = Math.max(0, 1 - scrollY / 500);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section - Split Layout */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+        <div
+          className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32"
+          style={{
+            opacity: heroOpacity,
+            transform: `translateY(${scrollY * 0.3}px)`,
+            transition: 'opacity 0.1s ease-out'
+          }}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left Side - Text Content */}
             <motion.div
@@ -15,7 +38,18 @@ export function AgentBuilders() {
               transition={{ duration: 0.8 }}
             >
               <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">For Agent Builders</p>
-              <h1 className="mb-6 text-left">
+              <h1
+                className="mb-6 text-left"
+                style={{
+                  textShadow: `
+                    0 0 10px rgba(16, 185, 129, 0.4),
+                    0 0 20px rgba(16, 185, 129, 0.3),
+                    0 0 40px rgba(16, 185, 129, 0.2),
+                    0 0 80px rgba(16, 185, 129, 0.15),
+                    0 0 120px rgba(16, 185, 129, 0.1)
+                  `
+                }}
+              >
                 Join the Orchestra
               </h1>
               <p className="text-amber-300 text-xl mb-6">
@@ -83,7 +117,7 @@ export function AgentBuilders() {
             <h2 className="mb-6">
               Our Core Standards
             </h2>
-            <p className="text-amber-100/70 text-lg max-w-3xl mx-auto">
+            <p className="text-amber-100/70 text-lg mx-auto text-center">
               We differentiate ourselves through strict adherence to quality and security. Unlike open
               repositories where quantity is the metric, our marketplace prioritizes <strong className="text-amber-100">reliability</strong>.
             </p>
@@ -135,8 +169,8 @@ export function AgentBuilders() {
               >
                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                 <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 p-8 h-full transition-all duration-300">
-                  <div className="w-14 h-14 rounded-2xl overflow-hidden mb-6">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  <div className="photo-immersive-thumb w-14 h-14 rounded-2xl mb-6">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
                   <p className="text-amber-100/70 mb-6">{item.description}</p>
@@ -167,10 +201,10 @@ export function AgentBuilders() {
             className="text-center mb-16"
           >
             <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Getting Listed</p>
-            <h2 className="mb-6">
+            <h2 className="mb-6 text-center">
               The Certification Process
             </h2>
-            <p className="text-amber-100/70 text-lg max-w-3xl mx-auto">
+            <p className="text-amber-100/70 text-lg text-center">
               To ensure compliance with our standards, all developers must pass our three-stage
               verification workflow before publishing.
             </p>
@@ -208,8 +242,8 @@ export function AgentBuilders() {
                 className="relative"
               >
                 <div className="bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-8 h-full">
-                  <div className="w-12 h-12 rounded-2xl overflow-hidden mb-6">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                  <div className="photo-immersive-thumb w-12 h-12 rounded-2xl mb-6">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-2xl" />
                   </div>
                   <div className="text-amber-400 font-bold text-sm mb-2">STAGE {item.step}</div>
                   <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
@@ -308,10 +342,10 @@ export function AgentBuilders() {
               <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-700 rounded-3xl blur-xl opacity-30" />
               <div className="relative bg-gradient-to-br from-[#1a1208] to-[#0a0804] rounded-3xl border border-amber-500/30 p-12 lg:p-16 text-center">
                 <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Get Started</p>
-                <h2 className="mb-6">
+                <h2 className="mb-6 text-center">
                   Become a Partner
                 </h2>
-                <p className="text-amber-100/70 mb-10 max-w-2xl mx-auto text-lg">
+                <p className="text-amber-100/70 mb-10 text-lg text-center">
                   Join a network of professional engineers automating the physical economy.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

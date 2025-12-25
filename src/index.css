@@ -2815,28 +2815,28 @@ button {
 
 /* Custom styles for select dropdowns to ensure readable text */
 select option {
-  background-color: #1a1208;
-  color: #fef3c7;
-  /* amber-100 */
+  background-color: #0a0f0a;
+  color: #a7f3d0;
+  /* emerald-200 */
   padding: 8px 12px;
 }
 
 select option:hover,
 select option:focus,
 select option:checked {
-  background-color: #d97706;
-  /* amber-600 */
-  color: #1c1917;
+  background-color: #047857;
+  /* emerald-700 - darker green */
+  color: #ffffff;
 }
 
 /* For the select element itself on focus */
 select:focus {
   outline: none;
-  border-color: rgba(251, 191, 36, 0.5);
-  /* amber-400 with opacity */
+  border-color: rgba(16, 185, 129, 0.5);
+  /* emerald-500 with opacity */
 }
 
-/* Global button hover effects - amber shade */
+/* Global button hover effects */
 button,
 a[href],
 [role="button"],
@@ -2845,16 +2845,230 @@ input[type="button"] {
   transition: all 0.3s ease;
 }
 
-button:hover,
-a[href]:hover,
-[role="button"]:hover,
-input[type="submit"]:hover,
-input[type="button"]:hover {
-  box-shadow: 0 0 30px rgba(146, 64, 14, 0.6), inset 0 0 0 100px rgba(120, 53, 15, 0.35);
+/* Navigation links - white angelic glow on hover */
+nav a[href]:hover {
+  background: white !important;
+  color: black !important;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Exclude logo from hover effects - target by href="#" */
+nav a[href="#"]:hover {
+  background: transparent !important;
+  color: inherit !important;
+  box-shadow: none !important;
 }
 
 /* Specific styling for primary action buttons */
 button:not([disabled]):hover,
 a:not([disabled]):hover {
   filter: brightness(1.1);
+}
+
+/* ========================================
+   IMMERSIVE PHOTO EFFECTS
+   Combines: feathered edges, color tint,
+   glow effects, and reduced opacity
+   ======================================== */
+
+/* Base immersive photo container */
+.photo-immersive {
+  position: relative;
+  overflow: visible;
+}
+
+/* Glow effect behind the image */
+.photo-immersive::before {
+  content: '';
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(ellipse at center,
+      rgba(16, 185, 129, 0.25) 0%,
+      rgba(245, 158, 11, 0.15) 40%,
+      transparent 70%);
+  filter: blur(25px);
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+/* Enhanced glow on hover */
+.photo-immersive:hover::before {
+  opacity: 1;
+}
+
+/* The image itself with feathered edges */
+.photo-immersive img {
+  opacity: 0.75;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  mask-image: radial-gradient(ellipse 90% 90% at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at center, black 60%, transparent 100%);
+}
+
+/* Enhanced opacity on hover */
+.photo-immersive:hover img {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Color tint overlay */
+.photo-immersive::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(16, 185, 129, 0.15) 0%,
+      rgba(245, 158, 11, 0.1) 50%,
+      rgba(16, 185, 129, 0.12) 100%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+
+/* Variant: Circular photos (for avatars/team) */
+.photo-immersive-circle {
+  position: relative;
+  overflow: visible;
+}
+
+.photo-immersive-circle::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.3) 0%,
+      rgba(245, 158, 11, 0.2) 30%,
+      transparent 60%);
+  filter: blur(30px);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.photo-immersive-circle img {
+  opacity: 0.8;
+  mask-image: radial-gradient(circle, black 50%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle, black 50%, transparent 85%);
+  transition: opacity 0.3s ease;
+}
+
+.photo-immersive-circle:hover img {
+  opacity: 0.95;
+}
+
+/* Variant: Cards with photos */
+.photo-immersive-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-immersive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(10, 15, 10, 0.4) 50%,
+      rgba(10, 15, 10, 0.95) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.photo-immersive-card img {
+  opacity: 0.7;
+  filter: saturate(0.8);
+  transition: all 0.4s ease;
+}
+
+.photo-immersive-card:hover img {
+  opacity: 0.85;
+  filter: saturate(1);
+  transform: scale(1.05);
+}
+
+/* Variant: Hero/Large images */
+.photo-immersive-hero {
+  position: relative;
+}
+
+.photo-immersive-hero::before {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(ellipse 80% 60% at center,
+      rgba(16, 185, 129, 0.2) 0%,
+      rgba(245, 158, 11, 0.15) 30%,
+      transparent 60%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.photo-immersive-hero img {
+  opacity: 0.8;
+  mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 70%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 70%,
+      transparent 100%);
+}
+
+/* Small thumbnail variant */
+.photo-immersive-thumb {
+  position: relative;
+  overflow: visible;
+}
+
+.photo-immersive-thumb::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(circle,
+      rgba(16, 185, 129, 0.25) 0%,
+      transparent 70%);
+  filter: blur(12px);
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-immersive-thumb:hover::before {
+  opacity: 1;
+}
+
+.photo-immersive-thumb img {
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+}
+
+.photo-immersive-thumb:hover img {
+  opacity: 0.95;
+}
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee2 {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.group:hover .animate-marquee,
+.group:hover .animate-marquee2 {
+  animation-play-state: paused;
 }

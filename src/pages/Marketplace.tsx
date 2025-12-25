@@ -32,7 +32,7 @@ export function Marketplace() {
                 <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center max-w-4xl mx-auto">
                         <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Marketplace</p>
-                        <h1 className="mb-6">The Secure AI Agent Marketplace</h1>
+                        <h1 className="mb-6" style={{ textShadow: '0 0 10px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.2), 0 0 80px rgba(16, 185, 129, 0.15), 0 0 120px rgba(16, 185, 129, 0.1)' }}>The Secure AI Agent Marketplace</h1>
                         <div className="relative max-w-2xl mx-auto">
                             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-amber-100/40" size={20} />
                             <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search agents..." className="w-full pl-12 pr-4 py-4 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-100 placeholder-amber-100/40 focus:outline-none focus:border-amber-400/50" />

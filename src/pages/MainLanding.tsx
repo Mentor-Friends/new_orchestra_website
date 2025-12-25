@@ -14,7 +14,18 @@ export function MainLanding() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="mb-6 text-left">
+              <h1
+                className="mb-6 text-left"
+                style={{
+                  textShadow: `
+                    0 0 10px rgba(16, 185, 129, 0.4),
+                    0 0 20px rgba(16, 185, 129, 0.3),
+                    0 0 40px rgba(16, 185, 129, 0.2),
+                    0 0 80px rgba(16, 185, 129, 0.15),
+                    0 0 120px rgba(16, 185, 129, 0.1)
+                  `
+                }}
+              >
                 The Secure AI Agent Marketplace
               </h1>
               <p className="text-amber-300 text-xl mb-6">

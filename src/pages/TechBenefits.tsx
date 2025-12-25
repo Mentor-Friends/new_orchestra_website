@@ -1,12 +1,35 @@
 import { motion } from 'motion/react';
+import { useState, useEffect } from 'react';
 import { ArrowRight, Shield, Zap, Lock, Brain, CheckCircle2, Cpu, Network, Eye, Globe } from 'lucide-react';
 
 export function TechBenefits() {
+    // Scroll-based fade effect for hero content
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Calculate opacity: fade out between 0-500px scroll for smooth, gradual fade
+    const heroOpacity = Math.max(0, 1 - scrollY / 500);
+
     return (
         <div className="min-h-screen">
             {/* Hero Section - Split Layout */}
             <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-                <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32">
+                <div
+                    className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32"
+                    style={{
+                        opacity: heroOpacity,
+                        transform: `translateY(${scrollY * 0.3}px)`,
+                        transition: 'opacity 0.1s ease-out'
+                    }}
+                >
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                         {/* Left Side - Text Content */}
                         <motion.div
@@ -15,7 +38,18 @@ export function TechBenefits() {
                             transition={{ duration: 0.8 }}
                         >
                             <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Technology & Benefits</p>
-                            <h1 className="mb-6 text-left">
+                            <h1
+                                className="mb-6 text-left"
+                                style={{
+                                    textShadow: `
+                                        0 0 10px rgba(16, 185, 129, 0.4),
+                                        0 0 20px rgba(16, 185, 129, 0.3),
+                                        0 0 40px rgba(16, 185, 129, 0.2),
+                                        0 0 80px rgba(16, 185, 129, 0.15),
+                                        0 0 120px rgba(16, 185, 129, 0.1)
+                                    `
+                                }}
+                            >
                                 Enterprise-Grade AI Infrastructure
                             </h1>
                             <p className="text-amber-300 text-xl mb-6">
@@ -62,8 +96,8 @@ export function TechBenefits() {
                                             'https://images.unsplash.com/photo-1573164713619-24c711fe7878?w=400&h=400&fit=crop',
                                             'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=400&fit=crop'
                                         ].map((src, i) => (
-                                            <div key={i} className="aspect-square rounded-2xl overflow-hidden">
-                                                <img src={src} alt="" className="w-full h-full object-cover opacity-70" />
+                                            <div key={i} className="photo-immersive-thumb aspect-square rounded-2xl">
+                                                <img src={src} alt="" className="w-full h-full object-cover rounded-2xl" />
                                             </div>
                                         ))}
                                     </div>
@@ -86,10 +120,10 @@ export function TechBenefits() {
                         className="text-center mb-16"
                     >
                         <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Core Technology</p>
-                        <h2 className="mb-6">
+                        <h2 className="mb-6 text-center">
                             The Foundation of Trust
                         </h2>
-                        <p className="text-amber-100/70 text-lg max-w-3xl mx-auto">
+                        <p className="text-amber-100/70 text-lg text-center">
                             Our platform is built on three pillars: the Google A2A Protocol, adversarial security testing,
                             and enterprise-grade infrastructure.
                         </p>
@@ -130,8 +164,8 @@ export function TechBenefits() {
                             >
                                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                                 <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 p-8 h-full transition-all duration-300">
-                                    <div className="w-14 h-14 rounded-2xl overflow-hidden mb-6">
-                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                                    <div className="photo-immersive-thumb w-14 h-14 rounded-2xl mb-6">
+                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-2xl" />
                                     </div>
                                     <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
                                     <p className="text-amber-100/70 mb-6">{item.description}</p>
@@ -161,15 +195,13 @@ export function TechBenefits() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className="relative">
-                                <div className="absolute -inset-4 bg-gradient-to-r from-amber-700/20 to-amber-800/20 rounded-3xl blur-2xl" />
+                            <div className="photo-immersive-hero relative rounded-3xl">
                                 <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 overflow-hidden">
                                     <img
                                         src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop"
                                         alt="Enterprise Security"
-                                        className="w-full h-auto object-cover opacity-80"
+                                        className="w-full h-auto object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1208] via-transparent to-transparent" />
                                 </div>
                             </div>
                         </motion.div>
@@ -283,13 +315,13 @@ export function TechBenefits() {
                         className="max-w-4xl mx-auto"
                     >
                         <div className="relative">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-700 rounded-3xl blur-xl opacity-30" />
-                            <div className="relative bg-gradient-to-br from-[#1a1208] to-[#0a0804] rounded-3xl border border-amber-500/30 p-12 lg:p-16 text-center">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-700 rounded-2xl blur-xl opacity-30" />
+                            <div className="relative bg-gradient-to-br from-[#1a1208] to-[#0a0804] rounded-2xl border border-amber-500/30 p-8 lg:p-10 text-center">
                                 <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Get Started</p>
-                                <h2 className="mb-6">
+                                <h2 className="mb-6 text-center">
                                     Ready to Experience the Difference?
                                 </h2>
-                                <p className="text-amber-100/70 mb-10 max-w-2xl mx-auto text-lg">
+                                <p className="text-amber-100/70 mb-10 text-lg text-center">
                                     See how A2A Orchestra's technology can transform your AI operations.
                                 </p>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
