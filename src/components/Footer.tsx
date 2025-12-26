@@ -49,7 +49,7 @@ export function Footer() {
               <span className="text-amber-100 font-medium">A2A Orchestra</span>
             </div>
             <p className="text-sm text-amber-100/60 mb-6 max-w-xs">
-              The first security-focused marketplace for production-ready AI agents.
+              The first security focused marketplace for production ready AI agents.
               Built for enterprises, designed for developers.
             </p>
             <div className="flex gap-3">

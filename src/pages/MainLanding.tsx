@@ -29,7 +29,7 @@ export function MainLanding() {
                 The Secure AI Agent Marketplace
               </h1>
               <p className="text-amber-300 text-xl mb-6">
-                Enterprises deploy. Developers ship. Builders cash out.
+                Organizations deploy. Developers ship. Builders cash out.
               </p>
               <p className="text-amber-100/70 text-lg mb-8 leading-relaxed">
                 A2A Orchestra is the only exchange where trust is mathematical, not theoretical.
@@ -96,11 +96,11 @@ export function MainLanding() {
               </h2>
               <p className="text-amber-100/70 text-lg leading-relaxed mb-6">
                 The agent economy has been <strong className="text-amber-100">paralyzed by a standoff</strong> between
-                the promise of AI and the reality of <strong className="text-amber-100">enterprise risk</strong>.
+                the promise of AI and the reality of <strong className="text-amber-100">corporate risk</strong>.
               </p>
               <p className="text-amber-100/70 text-lg leading-relaxed">
                 Enterprises want autonomous AI but can't verify trust. Developers build incredible agents
-                but can't reach enterprise buyers. Builders create value but can't capture it.
+                but can't reach business clients. Builders create value but can't capture it.
               </p>
             </motion.div>
 
@@ -288,12 +288,11 @@ export function MainLanding() {
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-amber-600 to-amber-700 rounded-3xl blur-xl opacity-30" />
               <div className="relative bg-gradient-to-br from-[#1a1208] to-[#0a0804] rounded-3xl border border-amber-500/30 p-12 lg:p-16 text-center">
-                <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Get Started</p>
                 <h2 className="mb-6">
                   Ready to Join the Agent Economy?
                 </h2>
-                <p className="text-amber-100/70 mb-10 max-w-2xl mx-auto text-lg">
-                  Whether you're deploying agents, building them, or creating the tools that power them—we're here to help.
+                <p className="text-amber-100/70 mb-10 mx-auto text-lg text-center">
+                  The overture is over. The market is open.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
