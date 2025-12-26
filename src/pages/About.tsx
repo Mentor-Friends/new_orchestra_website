@@ -82,7 +82,7 @@ export function About() {
                             {
                                 image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=400&fit=crop',
                                 title: 'The Trust Layer',
-                                description: 'We do not merely host code; we harmonize it. We have built the rigorous infrastructure necessary to turn isolated, autonomous agents into a synchronized workforce. We serve as the "Trust Layer" — the strict audition that every instrument must pass before taking the stage.'
+                                description: 'We do not merely host code; we harmonize it. We have built the rigorous infrastructure necessary to turn isolated, autonomous agents into a synchronized workforce. We serve as the "Trust Layer": the strict audition that every instrument must pass before taking the stage.'
                             },
                             {
                                 image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=400&fit=crop',
