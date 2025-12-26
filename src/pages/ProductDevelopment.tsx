@@ -36,25 +36,18 @@ export function ProductDevelopment() {
                                 Amplify Your Vision into an Orchestrated Symphony of Results
                             </p>
                             <p className="text-amber-100/70 text-lg mb-8 leading-relaxed">
-                                Deploy enterprise-grade AI agents with confidence. Our platform provides the security,
+                                You define the vision. We multiply your team's execution power. Our platform provides the security,
                                 verification, and infrastructure you need to build autonomous workforces at scale.
                             </p>
 
                             {/* CTA Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4">
-                                <a
-                                    href="#signin"
-                                    className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
-                                >
-                                    Get Started
-                                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-                                </a>
-                                <a
-                                    href="#marketplace"
-                                    className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
+                                <button
+                                    onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100 cursor-pointer"
                                 >
                                     Explore Capabilities
-                                </a>
+                                </button>
                             </div>
                         </motion.div>
 
@@ -103,8 +96,9 @@ export function ProductDevelopment() {
                             Everything You Need to Deploy AI at Scale
                         </h2>
                         <p className="text-amber-100/70 text-lg mx-auto text-center">
-                            Our platform provides enterprise-grade infrastructure, security, and support
-                            to help you build and deploy autonomous AI workforces with confidence.
+                            We identify your highest-friction workflows, engineer your custom automation layer, 
+                            and deploy a workforce with perfect recall that captures value without pause. 
+                            Delivered in 4-8 weeks.
                         </p>
                     </motion.div>
 
@@ -314,7 +308,7 @@ export function ProductDevelopment() {
                     >
                         <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Get Started</p>
                         <h2 className="mb-6">
-                            Ready to Build Your AI Workforce?
+                            Orchestrate Your Advantage
                         </h2>
                         <p className="text-amber-100/70 text-lg mx-auto text-center">
                             Fill out the form below and our team will reach out to discuss your requirements

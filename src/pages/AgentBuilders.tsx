@@ -34,14 +34,8 @@ export function AgentBuilders() {
               <p className="text-amber-300 text-xl mb-6">
                 Where builders compose the future.
               </p>
-              <p className="text-amber-100/70 text-lg mb-4 leading-relaxed">
-                A2A Orchestra is the marketplace for production-grade AI agents. Every agent here
-                is verified before listing. Developers integrate with confidence. Enterprises deploy
-                without second-guessing.
-              </p>
-              <p className="text-amber-100/70 text-lg mb-8 leading-relaxed">
-                What you compose becomes infrastructure others build on. Early builders shape the
-                repertoire. First movers set the standard.
+              <p className="text-amber-100/70 text-lg mb-8 leading-relaxed max-w-xl">
+                Every agent on A2A Orchestra is verified for production. Developers ship with confidence; enterprises deploy without doubt. Build here first. Early composers shape the standard.
               </p>
 
               {/* CTA Buttons */}

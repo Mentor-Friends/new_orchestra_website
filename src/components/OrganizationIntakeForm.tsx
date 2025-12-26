@@ -75,12 +75,14 @@ export function OrganizationIntakeForm() {
   const nextStep = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
+      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   const prevStep = () => {
     if (currentStep > 1) {
       setCurrentStep(currentStep - 1);
+      document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
