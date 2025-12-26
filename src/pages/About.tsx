@@ -51,14 +51,14 @@ export function About() {
                             The Conductor of the Digital Workforce
                         </h1>
                         <p className="text-amber-100/70 text-xl mb-10 leading-relaxed mx-auto text-center">
-                            The conductor of the digital workforce. The architect of certainty. The bridge
-                            between innovation and enterprise. We are the active force that organizes the noise into signal.
+                            The architect of certainty. The bridge between innovation and enterprise. We are the active force that organizes the noise into signal.
                         </p>
 
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
-                                href="#product"
+                                href="#product-development"
+                                onClick={() => setTimeout(() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }), 100)}
                                 className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
                             >
                                 Get Started
@@ -182,11 +182,13 @@ export function About() {
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
                                 className="text-center"
                             >
-                                <div className="photo-immersive-thumb w-16 h-16 rounded-2xl mx-auto mb-6">
-                                    <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-2xl" />
+                                <div className="bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-8 h-full">
+                                    <div className="photo-immersive-thumb w-24 h-24 rounded-2xl mx-auto mb-8">
+                                        <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-2xl" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-amber-100 mb-4">{item.title}</h3>
+                                    <p className="text-amber-100/70 text-lg leading-relaxed">{item.description}</p>
                                 </div>
-                                <h3 className="text-xl font-bold text-amber-100 mb-3">{item.title}</h3>
-                                <p className="text-amber-100/70">{item.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -210,12 +212,12 @@ export function About() {
                                     We Are A2A Orchestra.
                                 </h2>
                                 <p className="text-amber-100/70 mb-10 max-w-2xl mx-auto text-lg">
-                                    The conductor of the digital workforce. The architect of certainty.
-                                    The bridge between innovation and enterprise.
+                                    The architect of certainty. The bridge between innovation and enterprise.
                                 </p>
                                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                     <a
-                                        href="#product"
+                                        href="#product-development"
+                                        onClick={() => setTimeout(() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }), 100)}
                                         className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg shadow-amber-600/20 text-amber-950 font-semibold"
                                     >
                                         Get Started

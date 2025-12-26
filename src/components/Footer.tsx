@@ -10,7 +10,6 @@ export function Footer() {
     ],
     Developers: [
       { label: 'Publish Agent', href: '#agent-builders' },
-      { label: 'Documentation', href: '#docs' },
       { label: 'API Reference', href: '#' },
       { label: 'Revenue Calculator', href: '#' },
     ],
@@ -29,9 +28,7 @@ export function Footer() {
   };
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/a2a-orchestra/', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:storeaiagent@gmail.com', label: 'Email' },
   ];
 
@@ -42,11 +39,13 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img
-                src="/logo.png"
-                alt="A2A Orchestra"
-                className="w-10 h-10 object-contain"
-              />
+              <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+                <img
+                  src="/logos/a2a-logo.png"
+                  alt="A2A Orchestra"
+                  className="w-10 h-10 object-cover rounded-full"
+                />
+              </div>
               <span className="text-amber-100 font-medium">A2A Orchestra</span>
             </div>
             <p className="text-sm text-amber-100/60 mb-6 max-w-xs">

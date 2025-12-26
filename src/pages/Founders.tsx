@@ -66,11 +66,11 @@ export function Founders() {
       name: 'Paul Bobev',
       role: 'Co-Founder',
       image: '/founders/paul-bobev.png',
-      description: 'Technical architect focused on building scalable, secure systems for autonomous AI deployment.',
+      description: 'Leads marketing strategy, financial planning, and team development at A2A Orchestra, building the brand and operational foundation for sustainable growth.',
       responsibilities: [
-        'Technical Architecture',
-        'Security & Compliance',
-        'Infrastructure',
+        'Marketing & Brand Strategy',
+        'Financial Planning & Analysis',
+        'Team Building & Culture',
       ],
       linkedin: 'https://www.linkedin.com/in/paul-bobev/',
       twitter: '#',
@@ -174,15 +174,6 @@ export function Founders() {
                           <Linkedin size={18} className="text-amber-100/70" />
                         </a>
                       )}
-                      {founder.twitter && (
-                        <a
-                          href={founder.twitter}
-                          className="p-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 hover:border-amber-500/40 transition-all"
-                          title="Twitter"
-                        >
-                          <Twitter size={18} className="text-amber-100/70" />
-                        </a>
-                      )}
                       {founder.email && (
                         <a
                           href={`mailto:${founder.email}`}
@@ -202,29 +193,26 @@ export function Founders() {
       </section>
 
       {/* Victories & Recognition Carousel */}
-      <section className="py-20 relative overflow-hidden border-t border-amber-500/10">
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-amber-500/5 blur-3xl opacity-30" />
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-12 text-center relative z-10">
-          <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">Our Pedigree</p>
-          <h2 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-100 to-amber-400">
-            Award-Winning Engineering
-          </h2>
+          <h2 className="text-amber-400 font-bold uppercase tracking-wide text-4xl md:text-5xl">Our Pedigree</h2>
         </div>
 
         {/* Carousel Container */}
         <div className="relative flex overflow-x-hidden group">
           <div className="flex animate-marquee whitespace-nowrap py-8">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="flex gap-56 px-28 items-center">
+              <div key={i} className="flex gap-64 px-32 items-start">
 
-                {/* AMD Logo */}
-                <div className="flex flex-col items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300 group/logo">
-                  <div className="h-20 mb-3 relative flex items-center justify-center">
+                {/* AMD Logo - KnightHacks */}
+                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
+                  <div className="h-16 mb-3 flex items-center justify-center">
                     <img
                       src="/logos/amd.png"
                       alt="AMD"
-                      className="h-full w-auto object-contain"
+                      className="max-h-full max-w-full object-contain"
                       style={{ filter: 'brightness(0) invert(1)' }}
                     />
                   </div>
@@ -235,15 +223,15 @@ export function Founders() {
                       <p className="text-white text-sm font-medium">KnightHacks 2025</p>
                     </div>
                   </div>
-                </div>
+                </a>
 
-                {/* Capital One Logo */}
-                <div className="flex flex-col items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
-                  <div className="h-20 mb-3 relative flex items-center justify-center">
+                {/* Capital One Logo - ShellHacks */}
+                <a href="https://devpost.com/software/agentzero-tnh9p3" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
+                  <div className="h-16 mb-3 flex items-center justify-center">
                     <img
                       src="/logos/capitalone.png"
                       alt="Capital One"
-                      className="h-full w-auto object-contain"
+                      className="max-h-full max-w-full object-contain"
                     />
                   </div>
                   <div className="text-center flex flex-col items-center gap-1">
@@ -253,15 +241,15 @@ export function Founders() {
                       <p className="text-white text-sm font-medium">ShellHacks 2025</p>
                     </div>
                   </div>
-                </div>
+                </a>
 
-                {/* Morgan & Morgan Logo */}
-                <div className="flex flex-col items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
-                  <div className="h-20 mb-3 relative flex items-center justify-center">
+                {/* Morgan & Morgan Logo - KnightHacks */}
+                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
+                  <div className="h-16 mb-3 flex items-center justify-center">
                     <img
                       src="/logos/morgan.png"
                       alt="Morgan & Morgan"
-                      className="h-full w-auto object-contain"
+                      className="max-h-full max-w-full object-contain"
                     />
                   </div>
                   <div className="text-center flex flex-col items-center gap-1">
@@ -271,7 +259,7 @@ export function Founders() {
                       <p className="text-white text-sm font-medium">KnightHacks 2025</p>
                     </div>
                   </div>
-                </div>
+                </a>
 
               </div>
             ))}
@@ -279,15 +267,15 @@ export function Founders() {
 
           <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap py-8">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="flex gap-56 px-28 items-center">
+              <div key={i} className="flex gap-64 px-32 items-start">
 
-                {/* AMD Logo */}
-                <div className="flex flex-col items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300 group/logo">
-                  <div className="h-20 mb-3 relative flex items-center justify-center">
+                {/* AMD Logo - KnightHacks */}
+                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
+                  <div className="h-16 mb-3 flex items-center justify-center">
                     <img
                       src="/logos/amd.png"
                       alt="AMD"
-                      className="h-full w-auto object-contain"
+                      className="max-h-full max-w-full object-contain"
                       style={{ filter: 'brightness(0) invert(1)' }}
                     />
                   </div>
@@ -298,15 +286,15 @@ export function Founders() {
                       <p className="text-white text-sm font-medium">KnightHacks 2025</p>
                     </div>
                   </div>
-                </div>
+                </a>
 
-                {/* Capital One Logo */}
-                <div className="flex flex-col items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
-                  <div className="h-20 mb-3 relative flex items-center justify-center">
+                {/* Capital One Logo - ShellHacks */}
+                <a href="https://devpost.com/software/agentzero-tnh9p3" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
+                  <div className="h-16 mb-3 flex items-center justify-center">
                     <img
                       src="/logos/capitalone.png"
                       alt="Capital One"
-                      className="h-full w-auto object-contain"
+                      className="max-h-full max-w-full object-contain"
                     />
                   </div>
                   <div className="text-center flex flex-col items-center gap-1">
@@ -316,15 +304,15 @@ export function Founders() {
                       <p className="text-white text-sm font-medium">ShellHacks 2025</p>
                     </div>
                   </div>
-                </div>
+                </a>
 
-                {/* Morgan & Morgan Logo */}
-                <div className="flex flex-col items-center justify-center opacity-90 hover:opacity-100 transition-opacity duration-300">
-                  <div className="h-20 mb-3 relative flex items-center justify-center">
+                {/* Morgan & Morgan Logo - KnightHacks */}
+                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
+                  <div className="h-16 mb-3 flex items-center justify-center">
                     <img
                       src="/logos/morgan.png"
                       alt="Morgan & Morgan"
-                      className="h-full w-auto object-contain"
+                      className="max-h-full max-w-full object-contain"
                     />
                   </div>
                   <div className="text-center flex flex-col items-center gap-1">
@@ -334,7 +322,7 @@ export function Founders() {
                       <p className="text-white text-sm font-medium">KnightHacks 2025</p>
                     </div>
                   </div>
-                </div>
+                </a>
 
               </div>
             ))}
@@ -365,7 +353,8 @@ export function Founders() {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
-                    href="#product"
+                    href="#product-development"
+                    onClick={() => setTimeout(() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }), 100)}
                     className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg shadow-amber-600/20 text-amber-950 font-semibold"
                   >
                     Get Started

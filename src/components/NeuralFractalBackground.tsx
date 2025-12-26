@@ -76,8 +76,17 @@ export function NeuralFractalBackground() {
       mouseTargetRef.current = { x: 0, y: 0 };
     };
 
+    // Handle tab visibility changes to prevent animation jumping
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        // Reset timing when tab becomes visible to prevent jump
+        lastTimeRef.current = 0;
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -632,7 +641,14 @@ export function NeuralFractalBackground() {
         lastTimeRef.current = time;
       }
 
-      const deltaTime = time - lastTimeRef.current;
+      let deltaTime = time - lastTimeRef.current;
+
+      // Cap deltaTime to prevent animation jumps when tabbing back in
+      // Max 100ms (10fps) to handle tab switch gracefully
+      if (deltaTime > 100) {
+        deltaTime = interval;
+        lastTimeRef.current = time;
+      }
 
       if (deltaTime < interval) {
         animationFrameId = requestAnimationFrame(animate);
@@ -641,8 +657,8 @@ export function NeuralFractalBackground() {
 
       lastTimeRef.current = time - (deltaTime % interval);
 
-      // Adjust physics for time delta (normalized to 60fps)
-      const timeScale = deltaTime / 16.67;
+      // Adjust physics for time delta (normalized to 60fps) - capped to prevent issues
+      const timeScale = Math.min(deltaTime / 16.67, 3);
 
       // Clear with fade effect for trails - adjusted for timeScale
       // We want the fade to be consistent in real-time
@@ -866,6 +882,7 @@ export function NeuralFractalBackground() {
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

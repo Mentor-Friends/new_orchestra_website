@@ -9,7 +9,7 @@ import { AgentBuilders } from './pages/AgentBuilders';
 import { Founders } from './pages/Founders';
 import { About } from './pages/About';
 import { Blogs } from './pages/Blogs';
-import { Docs } from './pages/Docs';
+
 import { Invest } from './pages/Invest';
 import { Profile } from './pages/Profile';
 import { SignIn } from './pages/SignIn';
@@ -69,8 +69,7 @@ export default function App() {
                 return <About />;
             case 'blogs':
                 return <Blogs />;
-            case 'docs':
-                return <Docs />;
+
             case 'invest':
                 return <Invest />;
             case 'profile':

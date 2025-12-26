@@ -40,7 +40,7 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
           <a href="#" className="flex items-center gap-3 no-underline cursor-pointer hover:opacity-100">
             <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
               <img
-                src="/logo.png"
+                src="/logos/a2a-logo.png"
                 alt="A2A Orchestra"
                 className="w-10 h-10 object-cover rounded-full hover:brightness-100"
               />

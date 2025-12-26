@@ -143,15 +143,15 @@ export function TechBenefits() {
                                 image: 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=400&h=400&fit=crop',
                                 title: 'Adversarial Security Testing',
                                 gradient: 'from-amber-600 to-amber-700',
-                                description: 'Every agent undergoes rigorous adversarial testing before deployment, simulating real-world attack vectors.',
+                                description: 'Every agent undergoes rigorous adversarial testing at the protocol level before deployment, simulating real-world attack vectors.',
                                 features: ['LLM jailbreak prevention', 'Prompt injection defense', 'Anomalous behavior detection']
                             },
                             {
                                 image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
                                 title: 'Sandboxed Execution',
                                 gradient: 'from-amber-700 to-amber-800',
-                                description: 'All agent code runs in isolated, ephemeral environments. Zero data retention, absolute privacy.',
-                                features: ['Isolated containers', 'Ephemeral environments', 'Zero data retention']
+                                description: 'All agent code runs in isolated, ephemeral environments for maximum security.',
+                                features: ['Isolated containers', 'Ephemeral environments', 'Secure execution']
                             }
                         ].map((item, index) => (
                             <motion.div
@@ -273,14 +273,14 @@ export function TechBenefits() {
                                 metricLabel: 'Cost Reduction'
                             },
                             {
-                                title: 'Enterprise Compliance',
-                                description: 'SOC 2 compliant infrastructure with complete audit trails. Meet regulatory requirements without building custom compliance systems.',
+                                title: 'Built-in Compliance',
+                                description: 'Comprehensive security framework with complete audit trails. Meet regulatory requirements without building custom compliance systems.',
                                 metric: '100%',
                                 metricLabel: 'Audit Coverage'
                             },
                             {
                                 title: 'Scale Without Limits',
-                                description: 'Auto-scaling infrastructure handles millions of agent executions. Deploy globally with edge computing and CDN support.',
+                                description: 'Auto-scaling infrastructure handles millions of agent executions. Deploy globally with auto-scaling infrastructure.',
                                 metric: '99.9%',
                                 metricLabel: 'Uptime SLA'
                             }

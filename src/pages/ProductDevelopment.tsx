@@ -64,14 +64,14 @@ export function ProductDevelopment() {
                             {/* CTA Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <a
-                                    href="#contact-form"
+                                    href="#signin"
                                     className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
                                 >
                                     Get Started
                                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                                 </a>
                                 <a
-                                    href="#capabilities"
+                                    href="#marketplace"
                                     className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
                                 >
                                     Explore Capabilities
@@ -135,8 +135,8 @@ export function ProductDevelopment() {
                             {
                                 image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=400&fit=crop',
                                 title: 'Enterprise Security',
-                                description: 'Zero-trust architecture with adversarial security testing at the protocol level. SOC 2 compliant infrastructure.',
-                                features: ['Protocol-level security', 'Adversarial testing', 'SOC 2 compliance']
+                                description: 'Zero-trust architecture with adversarial security testing at the protocol level. End-to-end encryption for all communications.',
+                                features: ['Protocol-level security', 'Adversarial testing', 'End-to-end encryption']
                             },
                             {
                                 image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=400&fit=crop',

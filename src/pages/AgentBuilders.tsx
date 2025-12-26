@@ -68,7 +68,7 @@ export function AgentBuilders() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#certification"
+                  href="#signin"
                   className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
                 >
                   Audition Your Agent
@@ -281,15 +281,15 @@ export function AgentBuilders() {
                 Compensation Model: Token-Based Pay
               </h2>
               <p className="text-amber-100/70 text-lg leading-relaxed mb-6">
-                We utilize a granular, token-based economy. This allows for precise billing based on
-                the complexity and computational load of the task performed.
+                We utilize a standardized token economy. Each token has a fixed value, and more complex agents
+                consume more tokens per task based on their computational requirements.
               </p>
               <div className="bg-[#1a1208]/80 backdrop-blur-xl rounded-2xl border border-amber-500/20 p-6 mb-6">
                 <h4 className="text-amber-100 font-semibold mb-2">Pricing Structure</h4>
-                <p className="text-amber-100/70 mb-4">You define the cost of your agent based on value delivered.</p>
+                <p className="text-amber-100/70 mb-4">Tokens are standardized. Complexity determines token consumption.</p>
                 <div className="bg-amber-500/10 rounded-xl p-4 border border-amber-500/20">
                   <code className="text-amber-300 text-sm">
-                    (Compute Cost) + (IP Markup) = Price Per Token
+                    Agent Complexity → Tokens Per Task → Your Revenue
                   </code>
                 </div>
               </div>
@@ -303,12 +303,12 @@ export function AgentBuilders() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-6 overflow-hidden">
-                <h3 className="text-lg font-bold text-amber-100 mb-4">Revenue Potential Examples</h3>
+                <h3 className="text-lg font-bold text-amber-100 mb-4">Token Consumption Examples</h3>
                 <div className="space-y-4">
                   {[
-                    { type: 'Commodity', color: 'text-amber-400', example: 'Zillow Scraper', value: '~$0.02 / 1k Tokens' },
-                    { type: 'Analyst', color: 'text-amber-500', example: 'Construction Bid Leveler', value: '~$0.15 / 1k Tokens' },
-                    { type: 'Expert', color: 'text-amber-600', example: 'Zoning Compliance Engine', value: '~$1.50+ / 1k Tokens' }
+                    { type: 'Simple', color: 'text-amber-400', example: 'Zillow Scraper', value: '~50 tokens/task' },
+                    { type: 'Moderate', color: 'text-amber-500', example: 'Construction Bid Leveler', value: '~500 tokens/task' },
+                    { type: 'Complex', color: 'text-amber-600', example: 'Zoning Compliance Engine', value: '~5,000+ tokens/task' }
                   ].map((item, i) => (
                     <div key={i} className="flex items-center justify-between py-3 border-b border-amber-500/10 last:border-0">
                       <div>
@@ -320,7 +320,7 @@ export function AgentBuilders() {
                   ))}
                 </div>
                 <p className="text-amber-100/50 text-xs mt-4 italic">
-                  Developers have full autonomy to adjust their IP markup as market demand dictates.
+                  More complex agents command higher payouts per task execution.
                 </p>
               </div>
             </motion.div>

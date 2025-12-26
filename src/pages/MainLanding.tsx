@@ -40,6 +40,7 @@ export function MainLanding() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="#product-development"
+                  onClick={() => setTimeout(() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }), 100)}
                   className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
                 >
                   Get Started
@@ -202,7 +203,7 @@ export function MainLanding() {
             <h2 className="mb-6">
               One Platform, Three Winners
             </h2>
-            <p className="text-amber-100/70 text-lg max-w-3xl mx-auto">
+            <p className="text-amber-100/70 text-lg mx-auto text-center">
               A2A Orchestra creates value for everyone in the AI agent ecosystem.
             </p>
           </motion.div>
@@ -214,7 +215,7 @@ export function MainLanding() {
                 image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop',
                 title: 'Enterprises',
                 gradient: 'from-amber-500 to-amber-600',
-                description: 'Deploy AI agents with confidence. Every agent is verified, secure, and compliant. Pay only for successful outcomes.',
+                description: 'Deploy AI agents with confidence. Every agent is verified, secure, and compliant.',
                 cta: 'Deploy Agents',
                 href: '#product-development'
               },
@@ -224,7 +225,7 @@ export function MainLanding() {
                 gradient: 'from-amber-600 to-amber-700',
                 description: 'Ship your agents to enterprise customers. No sales team required. We handle trust, billing, and distribution.',
                 cta: 'Publish Agents',
-                href: '#developers'
+                href: '#signin'
               },
               {
                 image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop',
@@ -232,7 +233,7 @@ export function MainLanding() {
                 gradient: 'from-amber-700 to-amber-800',
                 description: 'Create the building blocks of the agent economy. Get certified. Get discovered. Get paid.',
                 cta: 'Get Certified',
-                href: '#agent-builders'
+                href: '#signin'
               }
             ].map((item, index) => (
               <motion.div
@@ -244,9 +245,9 @@ export function MainLanding() {
                 className="group relative"
               >
                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-                <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 overflow-hidden h-full transition-all duration-300">
+                <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 overflow-hidden h-full transition-all duration-300 flex flex-col">
                   {/* Image with gradient overlay */}
-                  <div className="relative h-40 overflow-hidden">
+                  <div className="relative h-40 overflow-hidden flex-shrink-0">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -255,12 +256,13 @@ export function MainLanding() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1a1208] via-[#1a1208]/60 to-transparent" />
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-20`} />
                   </div>
-                  <div className="p-8 pt-4">
+                  <div className="p-8 pt-4 flex flex-col flex-grow">
                     <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
-                    <p className="text-amber-100/70 mb-6">{item.description}</p>
+                    <p className="text-amber-100/70 mb-6 flex-grow">{item.description}</p>
                     <a
                       href={item.href}
-                      className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors group/link"
+                      onClick={item.title === 'Enterprises' ? () => setTimeout(() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }), 100) : undefined}
+                      className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors group/link mt-auto"
                     >
                       {item.cta}
                       <ArrowRight className="group-hover/link:translate-x-1 transition-transform" size={16} />
@@ -295,14 +297,14 @@ export function MainLanding() {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
-                    href="#product-development"
+                    href="#signin"
                     className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg shadow-amber-600/20 text-amber-950 font-semibold"
                   >
                     Deploy AI Agents
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                   </a>
                   <a
-                    href="#developers"
+                    href="#signin"
                     className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/20 hover:border-amber-500/40 transition-all duration-200 text-amber-100"
                   >
                     Publish Your Agent
