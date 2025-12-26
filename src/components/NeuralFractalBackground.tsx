@@ -133,7 +133,7 @@ export function NeuralFractalBackground() {
         y2: endY,
         z2: endZ,
         depth,
-        baseOpacity: 0.12 + (maxDepth - depth) * 0.05,
+        baseOpacity: 0.24 + (maxDepth - depth) * 0.05,
         activity: 0,
         color,
         thickness: 1.5 + (maxDepth - depth) * 0.6,
@@ -428,13 +428,13 @@ export function NeuralFractalBackground() {
     const getLineColor = (color: string, opacity: number) => {
       switch (color) {
         case 'emerald':
-          return `rgba(0, 45, 0, ${opacity})`; // very deep green
+          return `rgba(0, 75, 0, ${opacity})`; // boosted deep green
         case 'teal':
-          return `rgba(0, 35, 0, ${opacity})`; // darker deep green
+          return `rgba(0, 65, 0, ${opacity})`; // boosted darker green
         case 'forest':
-          return `rgba(0, 29, 0, ${opacity})`; // #001D00
+          return `rgba(0, 57, 0, ${opacity})`; // boosted forest
         default:
-          return `rgba(0, 40, 0, ${opacity})`; // deep green
+          return `rgba(0, 70, 0, ${opacity})`; // boosted default
       }
     };
 

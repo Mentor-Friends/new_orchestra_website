@@ -223,8 +223,8 @@ export function MainLanding() {
                 image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop',
                 title: 'Developers',
                 gradient: 'from-amber-600 to-amber-700',
-                description: 'Ship your agents to enterprise customers. No sales team required. We handle trust, billing, and distribution.',
-                cta: 'Publish Agents',
+                description: 'Stop building plumbing and start shipping intelligence. Orchestrate verified agents into your stack with one protocol and one token.',
+                cta: 'Start Shipping',
                 href: '#signin'
               },
               {
