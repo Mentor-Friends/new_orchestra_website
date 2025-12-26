@@ -197,7 +197,7 @@ export function Developers() {
                 <h3 className="text-xl font-bold text-amber-100 mb-2">For the Engineer</h3>
                 <p className="text-amber-300 font-semibold mb-4">Meritocratic Payouts</p>
                 <p className="text-amber-100/70 leading-relaxed mb-6">
-                  Developers earn based on token consumption. Complex agents command higher payouts per task—the more value you create, the more you earn.
+                  Developers earn based on token consumption. Complex agents command higher payouts per task, the more value you create, the more you earn.
                 </p>
                 <div className="flex items-center gap-2 text-green-400 font-semibold">
                   <CheckCircle2 size={20} />
