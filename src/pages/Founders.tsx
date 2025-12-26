@@ -12,6 +12,16 @@ interface Founder {
   email?: string;
 }
 
+interface Award {
+  logo: string;
+  name: string;
+  award: string;
+  event: string;
+  link: string;
+  invert?: boolean;
+  scale?: number;
+}
+
 export function Founders() {
 
   const founders: Founder[] = [
@@ -57,6 +67,34 @@ export function Founders() {
       twitter: '#',
       email: 'paul@a2aorchestra.com',
     },
+  ];
+
+  const awards: Award[] = [
+    {
+      logo: '/logos/amd.png',
+      name: 'AMD',
+      award: '1st Place',
+      event: 'KnightHacks 2025',
+      link: 'https://devpost.com/software/lawgorithm-815k2x',
+      invert: true,
+      scale: 0.6
+    },
+    {
+      logo: '/logos/capitalone.png',
+      name: 'Capital One',
+      award: '1st Place',
+      event: 'ShellHacks 2025',
+      link: 'https://devpost.com/software/agentzero-tnh9p3',
+      scale: 1.5
+    },
+    {
+      logo: '/logos/morgan.png',
+      name: 'Morgan & Morgan',
+      award: '3rd Place',
+      event: 'KnightHacks 2025',
+      link: 'https://devpost.com/software/lawgorithm-815k2x',
+      scale: 2.0
+    }
   ];
 
 
@@ -179,128 +217,45 @@ export function Founders() {
 
         {/* Carousel Container */}
         <div className="relative flex overflow-x-hidden group">
-          <div className="flex animate-marquee whitespace-nowrap py-8">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="flex gap-64 px-32 items-start">
-
-                {/* AMD Logo - KnightHacks */}
-                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
-                  <div className="h-16 mb-3 flex items-center justify-center">
-                    <img
-                      src="/logos/amd.png"
-                      alt="AMD"
-                      className="max-h-full max-w-full object-contain"
-                      style={{ filter: 'brightness(0) invert(1)' }}
-                    />
-                  </div>
-                  <div className="text-center flex flex-col items-center gap-1">
-                    <p className="text-amber-400 font-bold text-lg leading-tight">1st Place</p>
-                    <div className="flex items-center gap-1.5 opacity-80">
-                      <img src="/logos/knighthacks.png" alt="KnightHacks" className="w-5 h-5 object-contain" />
-                      <p className="text-white text-sm font-medium">KnightHacks 2025</p>
+          <div className="flex animate-marquee py-8">
+            {/* We duplicate the content to ensure it fills the space for a seamless loop */}
+            {[...Array(10)].map((_, i) => (
+              <div key={i} className="flex gap-64 px-32 items-start flex-shrink-0">
+                {awards.map((award, index) => (
+                  <a
+                    key={`${i}-${index}`}
+                    href={award.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-72 flex-shrink-0 cursor-pointer"
+                  >
+                    <div className="flex items-center justify-center mb-4 h-12 w-full">
+                      <img
+                        src={award.logo}
+                        alt={award.name}
+                        className="object-contain"
+                        style={{
+                          height: '48px',
+                          width: 'auto',
+                          maxWidth: '100%',
+                          transform: `scale(${award.scale || 1})`,
+                          filter: award.invert ? 'brightness(0) invert(1)' : 'none'
+                        }}
+                      />
                     </div>
-                  </div>
-                </a>
-
-                {/* Capital One Logo - ShellHacks */}
-                <a href="https://devpost.com/software/agentzero-tnh9p3" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
-                  <div className="h-16 mb-3 flex items-center justify-center">
-                    <img
-                      src="/logos/capitalone.png"
-                      alt="Capital One"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="text-center flex flex-col items-center gap-1">
-                    <p className="text-amber-400 font-bold text-lg leading-tight">1st Place</p>
-                    <div className="flex items-center gap-1.5 opacity-80">
-                      <img src="/logos/shellhacks.png" alt="ShellHacks" className="w-5 h-5 object-contain" />
-                      <p className="text-white text-sm font-medium">ShellHacks 2025</p>
+                    <div className="text-center flex flex-col items-center gap-1">
+                      <p className="text-amber-400 font-bold text-lg leading-tight">{award.award}</p>
+                      <div className="flex items-center gap-1.5 opacity-80">
+                        <img
+                          src={award.event.toLowerCase().includes('knight') ? "/logos/knighthacks.png" : "/logos/shellhacks.png"}
+                          alt={award.event}
+                          className="w-5 h-5 object-contain"
+                        />
+                        <p className="text-white text-sm font-medium">{award.event}</p>
+                      </div>
                     </div>
-                  </div>
-                </a>
-
-                {/* Morgan & Morgan Logo - KnightHacks */}
-                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
-                  <div className="h-16 mb-3 flex items-center justify-center">
-                    <img
-                      src="/logos/morgan.png"
-                      alt="Morgan & Morgan"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="text-center flex flex-col items-center gap-1">
-                    <p className="text-amber-400 font-bold text-lg leading-tight">3rd Place</p>
-                    <div className="flex items-center gap-1.5 opacity-80">
-                      <img src="/logos/knighthacks.png" alt="KnightHacks" className="w-5 h-5 object-contain" />
-                      <p className="text-white text-sm font-medium">KnightHacks 2025</p>
-                    </div>
-                  </div>
-                </a>
-
-              </div>
-            ))}
-          </div>
-
-          <div className="absolute top-0 flex animate-marquee2 whitespace-nowrap py-8">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="flex gap-64 px-32 items-start">
-
-                {/* AMD Logo - KnightHacks */}
-                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
-                  <div className="h-16 mb-3 flex items-center justify-center">
-                    <img
-                      src="/logos/amd.png"
-                      alt="AMD"
-                      className="max-h-full max-w-full object-contain"
-                      style={{ filter: 'brightness(0) invert(1)' }}
-                    />
-                  </div>
-                  <div className="text-center flex flex-col items-center gap-1">
-                    <p className="text-amber-400 font-bold text-lg leading-tight">1st Place</p>
-                    <div className="flex items-center gap-1.5 opacity-80">
-                      <img src="/logos/knighthacks.png" alt="KnightHacks" className="w-5 h-5 object-contain" />
-                      <p className="text-white text-sm font-medium">KnightHacks 2025</p>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Capital One Logo - ShellHacks */}
-                <a href="https://devpost.com/software/agentzero-tnh9p3" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
-                  <div className="h-16 mb-3 flex items-center justify-center">
-                    <img
-                      src="/logos/capitalone.png"
-                      alt="Capital One"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="text-center flex flex-col items-center gap-1">
-                    <p className="text-amber-400 font-bold text-lg leading-tight">1st Place</p>
-                    <div className="flex items-center gap-1.5 opacity-80">
-                      <img src="/logos/shellhacks.png" alt="ShellHacks" className="w-5 h-5 object-contain" />
-                      <p className="text-white text-sm font-medium">ShellHacks 2025</p>
-                    </div>
-                  </div>
-                </a>
-
-                {/* Morgan & Morgan Logo - KnightHacks */}
-                <a href="https://devpost.com/software/lawgorithm-815k2x" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity duration-300 w-40 cursor-pointer">
-                  <div className="h-16 mb-3 flex items-center justify-center">
-                    <img
-                      src="/logos/morgan.png"
-                      alt="Morgan & Morgan"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="text-center flex flex-col items-center gap-1">
-                    <p className="text-amber-400 font-bold text-lg leading-tight">3rd Place</p>
-                    <div className="flex items-center gap-1.5 opacity-80">
-                      <img src="/logos/knighthacks.png" alt="KnightHacks" className="w-5 h-5 object-contain" />
-                      <p className="text-white text-sm font-medium">KnightHacks 2025</p>
-                    </div>
-                  </div>
-                </a>
-
+                  </a>
+                ))}
               </div>
             ))}
           </div>

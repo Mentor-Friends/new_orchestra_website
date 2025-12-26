@@ -3052,7 +3052,7 @@ a:not([disabled]):hover {
 /* Marquee Animation */
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
 
   100% {
@@ -3060,26 +3060,17 @@ a:not([disabled]):hover {
   }
 }
 
-@keyframes marquee2 {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0%);
-  }
-}
-
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
-.animate-marquee2 {
-  animation: marquee2 30s linear infinite;
+/* Secondary marquee uses the same animation but following the first */
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
 }
 
 /* Pause animation on hover */
-.group:hover .animate-marquee,
-.group:hover .animate-marquee2 {
+.group:hover .animate-marquee {
   animation-play-state: paused;
 }
