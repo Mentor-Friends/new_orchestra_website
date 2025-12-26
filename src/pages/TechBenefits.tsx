@@ -1,34 +1,13 @@
 import { motion } from 'motion/react';
-import { useState, useEffect } from 'react';
 import { ArrowRight, Shield, Zap, Lock, Brain, CheckCircle2, Cpu, Network, Eye, Globe } from 'lucide-react';
 
 export function TechBenefits() {
-    // Scroll-based fade effect for hero content
-    const [scrollY, setScrollY] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Calculate opacity: fade out between 0-500px scroll for smooth, gradual fade
-    const heroOpacity = Math.max(0, 1 - scrollY / 500);
-
     return (
         <div className="min-h-screen">
             {/* Hero Section - Split Layout */}
             <section className="relative min-h-[80vh] flex items-center overflow-hidden">
                 <div
                     className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32"
-                    style={{
-                        opacity: heroOpacity,
-                        transform: `translateY(${scrollY * 0.3}px)`,
-                        transition: 'opacity 0.1s ease-out'
-                    }}
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                         {/* Left Side - Text Content */}

@@ -21,29 +21,50 @@ export function ScrollFadeProvider({
     const updateOpacities = useCallback(() => {
         if (!containerRef.current) return;
 
-        const viewportCenter = window.innerHeight / 2;
         const sections = containerRef.current.querySelectorAll('section');
+        const NAV_BAR_HEIGHT = 80;
+        const FADE_START = 230; // Extended zone for smoother transition
 
-        sections.forEach((section, index) => {
+        sections.forEach((section: HTMLElement) => {
             const rect = section.getBoundingClientRect();
-            const elementCenter = rect.top + rect.height / 2;
+            
+            // GPU acceleration hint for smoother rendering
+            section.style.willChange = 'mask-image, opacity';
+            
+            // If section is completely below the fade start point, clear mask and keep full opacity
+            if (rect.top >= FADE_START) {
+                section.style.webkitMaskImage = '';
+                section.style.maskImage = '';
+                section.style.opacity = '1';
+                return;
+            }
 
-            // Distance from element center to viewport center
-            const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+            // If section is completely above the nav bar, hide it completely
+            if (rect.bottom <= NAV_BAR_HEIGHT) {
+                section.style.opacity = '0';
+                section.style.willChange = 'auto'; // Release GPU resources
+                return;
+            }
 
-            // All sections at full opacity - no fade effect
-            const sectionMinOpacity = 1.0;
+            // Section is partially in the fade zone
+            const maskTop = NAV_BAR_HEIGHT - rect.top;
+            const maskMid = (FADE_START - rect.top + maskTop) / 2; // Midpoint for easing
+            const maskFade = FADE_START - rect.top;
 
-            // Calculate opacity: 1 when centered, fading as it moves away
-            // Use a larger fade distance for smoother transitions
-            const opacity = Math.max(sectionMinOpacity, 1 - distanceFromCenter / (fadeDistance * 1.5));
-
-            // Apply opacity to the section content, not the section itself
-            // This preserves layout while fading the visuals
-            (section as HTMLElement).style.opacity = String(opacity);
-            (section as HTMLElement).style.transition = 'opacity 0.2s ease-out';
+            // Multi-stop gradient for smoother easing (approximates ease-in-out)
+            const maskEffect = `linear-gradient(to bottom, 
+                transparent 0px, 
+                transparent ${maskTop}px, 
+                rgba(0,0,0,0.3) ${maskTop + (maskMid - maskTop) * 0.5}px,
+                rgba(0,0,0,0.7) ${maskMid}px,
+                black ${maskFade}px, 
+                black 100%)`;
+            
+            section.style.opacity = '1';
+            section.style.webkitMaskImage = maskEffect;
+            section.style.maskImage = maskEffect;
         });
-    }, [fadeDistance, minOpacity]);
+    }, []);
 
     useEffect(() => {
         // Initial update

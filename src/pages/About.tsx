@@ -1,34 +1,13 @@
 import { motion } from 'motion/react';
-import { useState, useEffect } from 'react';
 import { Shield, Zap, Users, ArrowRight } from 'lucide-react';
 
 export function About() {
-    // Scroll-based fade effect for hero content
-    const [scrollY, setScrollY] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Calculate opacity: fade out between 0-500px scroll for smooth, gradual fade
-    const heroOpacity = Math.max(0, 1 - scrollY / 500);
-
     return (
         <div className="min-h-screen">
             {/* Hero Section - Centered Layout */}
             <section className="relative min-h-screen flex items-center overflow-hidden">
                 <div
                     className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 py-32 text-center"
-                    style={{
-                        opacity: heroOpacity,
-                        transform: `translateY(${scrollY * 0.3}px)`,
-                        transition: 'opacity 0.1s ease-out'
-                    }}
                 >
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}

@@ -93,7 +93,9 @@ export default function App() {
             <NeuralFractalBackground />
             <div className="relative z-10">
                 <Navigation scrolled={scrolled} currentPage={currentPage} />
-                {renderPage()}
+                <ScrollFadeProvider fadeDistance={400} minOpacity={0.2}>
+                    {renderPage()}
+                </ScrollFadeProvider>
                 <Footer />
             </div>
         </div>

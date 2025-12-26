@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { useState, useEffect } from 'react';
 import { Linkedin, Twitter, Mail, ArrowRight } from 'lucide-react';
 
 interface Founder {
@@ -14,24 +13,6 @@ interface Founder {
 }
 
 export function Founders() {
-  // Scroll-based fade effect for cards - only starts after faces are scrolled away
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Cards stay at full opacity until 400px scroll (faces visible), then fade from 400px to 1000px
-  const fadeStartPoint = 400;
-  const fadeEndPoint = 1000;
-  const cardOpacity = scrollY <= fadeStartPoint
-    ? 1
-    : Math.max(0.1, 1 - (scrollY - fadeStartPoint) / (fadeEndPoint - fadeStartPoint));
 
   const founders: Founder[] = [
     {
@@ -115,10 +96,6 @@ export function Founders() {
           {/* Founders Grid - 3 Columns */}
           <div
             className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-            style={{
-              opacity: cardOpacity,
-              transition: 'opacity 0.15s ease-out'
-            }}
           >
             {founders.map((founder, index) => (
               <motion.div
