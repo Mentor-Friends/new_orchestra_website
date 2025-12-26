@@ -15,7 +15,7 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
     { label: 'For Agent Builders', href: '#agent-builders' },
     { label: 'Tech and Benefits', href: '#tech-benefits' },
     { label: 'Marketplace Platform', href: '#marketplace' },
-    { label: 'About', href: '#about' },
+    { label: 'About Us', href: '#about' },
     { label: 'Founders', href: '#founders' },
   ];
 

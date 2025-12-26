@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Shield, Award, DollarSign, CheckCircle2, FileSearch, Cpu, Lock } from 'lucide-react';
 
 export function AgentBuilders() {
-    return (
+  return (
     <div className="min-h-screen">
       {/* Hero Section - Split Layout */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
@@ -202,8 +202,7 @@ export function AgentBuilders() {
                 image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=400&fit=crop',
                 step: '02',
                 title: 'Automated Benchmarking',
-                description: 'Your agent is tested against standardized datasets to measure accuracy, efficiency, and stability.',
-                features: ['Precision in data retrieval', 'Token usage optimization', 'Error recovery ability']
+                description: 'Your agent is tested against standardized datasets to measure accuracy, efficiency, and stability. We evaluate precision in data retrieval, token usage optimization, and error recovery ability.'
               },
               {
                 image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=400&fit=crop',
@@ -227,16 +226,6 @@ export function AgentBuilders() {
                   <div className="text-amber-400 font-bold text-sm mb-2">STAGE {item.step}</div>
                   <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
                   <p className="text-amber-100/70 mb-4">{item.description}</p>
-                  {item.features && (
-                    <ul className="space-y-2">
-                      {item.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-amber-100/60 text-sm">
-                          <CheckCircle2 className="text-amber-400" size={16} />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               </motion.div>
             ))}
