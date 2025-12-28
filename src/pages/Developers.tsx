@@ -67,7 +67,7 @@ export function Developers() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-600/20 to-amber-800/20 rounded-3xl blur-2xl" />
                 <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-8">
-                  <div className="photo-immersive-circle w-32 h-32 mx-auto mb-4 rounded-full">
+                  <div className="photo-immersive-circle w-48 h-48 mx-auto mb-4 rounded-full">
                     <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=400&h=400&fit=crop" alt="Orchestra" className="w-full h-full object-cover rounded-full" />
                   </div>
                   <div className="text-center text-amber-100/60">Orchestrate Your Workforce</div>
@@ -106,7 +106,7 @@ export function Developers() {
               {
                 image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
                 title: 'Secure Composition',
-                description: 'Your data is the sheet music, it is yours alone. Agents execute in isolated, ephemeral environments. Once the note is played (the task is done), the environment dissolves.'
+                description: 'Your data is the sheet music, it is yours alone. Agents execute in isolated, ephemeral environments. Once the task is complete, the environment dissolves.'
               },
               {
                 image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=400&fit=crop',
@@ -174,10 +174,9 @@ export function Developers() {
                   Each token has a fixed value. More complex agents consume more tokens per task based on their computational requirements. Transparent, predictable pricing.
                 </p>
                 <div
-                  className="flex items-center gap-2 text-green-400 font-semibold"
-                  style={{ textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff' }}
+                  className="flex items-center gap-2 text-white font-semibold"
                 >
-                  <CheckCircle2 size={20} />
+                  <CheckCircle2 size={20} className="text-green-400" />
                   Result: Lower OpEx
                 </div>
               </div>
@@ -202,10 +201,9 @@ export function Developers() {
                   Developers earn based on token consumption. Complex agents command higher payouts per task, the more value you create, the more you earn.
                 </p>
                 <div
-                  className="flex items-center gap-2 text-green-400 font-semibold"
-                  style={{ textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff' }}
+                  className="flex items-center gap-2 text-white font-semibold"
                 >
-                  <CheckCircle2 size={20} />
+                  <CheckCircle2 size={20} className="text-green-400" />
                   Result: Superior Tool Quality
                 </div>
               </div>

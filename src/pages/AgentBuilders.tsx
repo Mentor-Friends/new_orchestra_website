@@ -114,7 +114,7 @@ export function AgentBuilders() {
                 image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=400&fit=crop',
                 title: 'Enterprise-Grade Security',
                 gradient: 'from-amber-600 to-amber-700',
-                description: 'Security is the foundation of our platform. We employ a defense-in-depth architecture:',
+                description: 'Security is the foundation of our platform. We employ a defense in depth architecture:',
                 features: [
                   { title: 'Sandboxed Execution', desc: 'All agent code runs within isolated environments.' },
                   { title: 'Malicious Actor Prevention', desc: 'Guardian Agent scans for attack vectors.' },

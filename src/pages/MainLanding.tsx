@@ -42,19 +42,19 @@ export function MainLanding() {
                   href="#product"
                   className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
                 >
-                  Business Clients
+                  Deploy
                 </a>
                 <a
                   href="#developers"
                   className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
                 >
-                  Developers
+                  Ship
                 </a>
                 <a
                   href="#agent-builders"
                   className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
                 >
-                  Agent Builders
+                  Build
                 </a>
               </div>
             </motion.div>

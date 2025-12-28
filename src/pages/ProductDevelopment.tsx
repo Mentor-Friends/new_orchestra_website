@@ -108,7 +108,7 @@ export function ProductDevelopment() {
                             {
                                 image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=400&fit=crop',
                                 title: 'Enterprise Security',
-                                description: 'Zero-trust architecture with adversarial security testing at the protocol level. End-to-end encryption for all communications.',
+                                description: 'Zero-trust architecture with adversarial security testing at the protocol level.',
                                 features: ['Protocol-level security', 'Adversarial testing', 'End-to-end encryption']
                             },
                             {
