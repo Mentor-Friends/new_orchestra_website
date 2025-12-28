@@ -42,7 +42,7 @@ export function Founders() {
     {
       name: 'Ilan Danial',
       role: 'Co-Founder',
-      image: '/founders/ilan-danial.png',
+      image: '/founders/ilan-danial.jpg',
       description: 'Drives the strategic vision and legal framework of A2A Orchestra, ensuring enterprise compliance and building the foundation for trusted autonomous AI.',
       responsibilities: [
         'Strategic Vision & Growth',
@@ -146,11 +146,11 @@ export function Founders() {
                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
                 <div className="relative bg-black/[0.88] backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 overflow-hidden transition-all duration-300 h-full">
                   {/* Photo Container */}
-                  <div className="relative aspect-[4/5]">
+                  <div className="relative w-full" style={{ height: '500px' }}>
                     <img
                       src={founder.image}
                       alt={founder.name}
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
 
