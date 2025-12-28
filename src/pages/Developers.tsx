@@ -35,19 +35,18 @@ export function Developers() {
                 Silence the noise. Deploy the symphony.
               </p>
               <p className="text-amber-100/70 text-lg mb-8 leading-relaxed">
-                The world's first arsenal of verified autonomous agents. 100% audited for security.
-                Benchmarked for lethal precision. You don't just build software anymore, you orchestrate
-                a workforce that never sleeps.
+                The world's premier marketplace of verified autonomous agents. 100% audited for security.
+                Benchmarked for exceptional precision. You don't just build software anymore, you orchestrate
+                a workforce that works around the clock.
               </p>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="#signin"
-                  className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
+                  className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
                 >
                   Enter the Orchestra
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                 </a>
                 <a
                   href="#workflow"
@@ -112,7 +111,7 @@ export function Developers() {
               {
                 image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=400&fit=crop',
                 title: 'Universal Token Standard',
-                description: 'One unified currency across the entire marketplace. No fragmented subscriptions or hidden fees—just straightforward token-based billing that scales with your usage.'
+                description: 'One unified currency across the entire marketplace. No fragmented subscriptions or hidden fees, just straightforward token-based billing that scales with your usage.'
               }
             ].map((item, index) => (
               <motion.div
@@ -174,7 +173,10 @@ export function Developers() {
                 <p className="text-amber-100/70 leading-relaxed mb-6">
                   Each token has a fixed value. More complex agents consume more tokens per task based on their computational requirements. Transparent, predictable pricing.
                 </p>
-                <div className="flex items-center gap-2 text-green-400 font-semibold">
+                <div
+                  className="flex items-center gap-2 text-green-400 font-semibold"
+                  style={{ textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff' }}
+                >
                   <CheckCircle2 size={20} />
                   Result: Lower OpEx
                 </div>
@@ -199,7 +201,10 @@ export function Developers() {
                 <p className="text-amber-100/70 leading-relaxed mb-6">
                   Developers earn based on token consumption. Complex agents command higher payouts per task, the more value you create, the more you earn.
                 </p>
-                <div className="flex items-center gap-2 text-green-400 font-semibold">
+                <div
+                  className="flex items-center gap-2 text-green-400 font-semibold"
+                  style={{ textShadow: '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff' }}
+                >
                   <CheckCircle2 size={20} />
                   Result: Superior Tool Quality
                 </div>
@@ -229,9 +234,9 @@ export function Developers() {
           {/* 4 Column Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop', step: '01', title: 'Select Instruments', description: 'Browse the marketplace for specific capabilities—Finance, Construction, Legal.' },
-              { image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=400&fit=crop', step: '02', title: 'Acquire Tokens', description: 'Pay as you go—load your account with A2A Tokens and use them across the entire marketplace.' },
-              { image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=400&fit=crop', step: '03', title: 'Connect via API', description: 'Use our unified SDK to send your "sheet music" (data) to the agent.' },
+              { image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop', step: '01', title: 'Select Instruments', description: 'Browse the marketplace for specific capabilities like Finance, Construction, Legal.' },
+              { image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=400&h=400&fit=crop', step: '02', title: 'Acquire Tokens', description: 'Pay as you go, load your account with A2A Tokens and use them across the entire marketplace.' },
+              { image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=400&fit=crop', step: '03', title: 'Connect via API', description: 'Use our unified SDK to send your data to the agent.' },
               { image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=400&fit=crop', step: '04', title: 'Receive Performance', description: 'Get structured data back. Integrate it directly into your systems and your own agentic solutions.' }
             ].map((item, index) => (
               <motion.div

@@ -44,7 +44,7 @@ export function ProductDevelopment() {
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <button
                                     onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                                    className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100 cursor-pointer"
+                                    className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-100/50 hover:border-amber-100 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100 cursor-pointer"
                                 >
                                     Explore Capabilities
                                 </button>
@@ -96,8 +96,8 @@ export function ProductDevelopment() {
                             Everything You Need to Deploy AI at Scale
                         </h2>
                         <p className="text-amber-100/70 text-lg mx-auto text-center">
-                            We identify your highest-friction workflows, engineer your custom automation layer, 
-                            and deploy a workforce with perfect recall that captures value without pause. 
+                            We identify your highest-friction workflows, engineer your custom automation layer,
+                            and deploy a workforce with perfect recall that captures value without pause.
                             Delivered in 4-8 weeks.
                         </p>
                     </motion.div>
@@ -139,7 +139,7 @@ export function ProductDevelopment() {
                                     </div>
                                     <h3 className="text-xl font-bold text-amber-100 mb-3">{capability.title}</h3>
                                     <p className="text-amber-100/70 mb-6 leading-relaxed">{capability.description}</p>
-                                    <ul className="space-y-2 text-left inline-block">
+                                    <ul className="space-y-2 flex flex-col items-center">
                                         {capability.features.map((feature, i) => (
                                             <li key={i} className="flex items-center gap-2 text-amber-100/60 text-sm">
                                                 <CheckCircle2 className="text-amber-400 flex-shrink-0" size={16} />

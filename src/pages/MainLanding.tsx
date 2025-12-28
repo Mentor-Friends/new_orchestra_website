@@ -39,18 +39,22 @@ export function MainLanding() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#product-development"
-                  onClick={() => setTimeout(() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }), 100)}
-                  className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 hover:shadow-amber-500/50 hover:scale-105 text-amber-950 font-semibold"
+                  href="#product"
+                  className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
                 >
-                  Get Started
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+                  Business Clients
                 </a>
                 <a
                   href="#developers"
-                  className="px-8 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
+                  className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
                 >
-                  See How It Works
+                  Developers
+                </a>
+                <a
+                  href="#agent-builders"
+                  className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 rounded-lg border border-amber-500/30 hover:border-amber-500/50 backdrop-blur-sm transition-all duration-300 hover:scale-105 text-center text-amber-100"
+                >
+                  Agent Builders
                 </a>
               </div>
             </motion.div>
@@ -90,17 +94,17 @@ export function MainLanding() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">The Problem</p>
+              <p className="text-amber-400 font-medium mb-4 uppercase tracking-wide text-sm">The Opportunity</p>
               <h2 className="mb-6 text-left">
-                The Agent Economy is at a Standstill
+                The Agent Economy is Ready to Thrive
               </h2>
               <p className="text-amber-100/70 text-lg leading-relaxed mb-6">
-                The agent economy has been <strong className="text-amber-100">paralyzed by a standoff</strong> between
-                the promise of AI and the reality of <strong className="text-amber-100">corporate risk</strong>.
+                The agent economy is <strong className="text-amber-100">primed for breakthrough</strong> as
+                AI capabilities align with <strong className="text-amber-100">enterprise readiness</strong>.
               </p>
               <p className="text-amber-100/70 text-lg leading-relaxed">
-                Enterprises want autonomous AI but can't verify trust. Developers build incredible agents
-                but can't reach business clients. Builders create value but can't capture it.
+                Enterprises are ready for autonomous AI with verified trust. Developers are building incredible agents
+                ready to reach business clients. Builders are creating value ready to be captured.
               </p>
             </motion.div>
 
@@ -245,7 +249,10 @@ export function MainLanding() {
                 className="group relative"
               >
                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-                <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 overflow-hidden h-full transition-all duration-300 flex flex-col">
+                <a
+                  href={item.href}
+                  className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 overflow-hidden h-full transition-all duration-300 flex flex-col cursor-pointer block"
+                >
                   {/* Image with gradient overlay */}
                   <div className="relative h-40 overflow-hidden flex-shrink-0">
                     <img
@@ -259,16 +266,12 @@ export function MainLanding() {
                   <div className="p-8 pt-4 flex flex-col flex-grow">
                     <h3 className="text-xl font-bold text-amber-100 mb-4">{item.title}</h3>
                     <p className="text-amber-100/70 mb-6 flex-grow">{item.description}</p>
-                    <a
-                      href={item.href}
-                      onClick={item.title === 'Enterprises' ? () => setTimeout(() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' }), 100) : undefined}
-                      className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors group/link mt-auto"
-                    >
+                    <span className="inline-flex items-center gap-2 text-amber-400 group-hover:text-amber-300 transition-colors mt-auto">
                       {item.cta}
-                      <ArrowRight className="group-hover/link:translate-x-1 transition-transform" size={16} />
-                    </a>
+                      <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                    </span>
                   </div>
-                </div>
+                </a>
               </motion.div>
             ))}
           </div>

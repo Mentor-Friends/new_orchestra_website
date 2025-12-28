@@ -16,7 +16,7 @@ export function Navigation({ scrolled, currentPage }: NavigationProps) {
     { label: 'Tech and Benefits', href: '#tech-benefits' },
     { label: 'Marketplace Platform', href: '#marketplace' },
     { label: 'About Us', href: '#about' },
-    { label: 'Founders', href: '#founders' },
+    { label: 'Founders & History', href: '#founders' },
   ];
 
   const isActive = (href: string) => {
