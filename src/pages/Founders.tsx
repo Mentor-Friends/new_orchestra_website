@@ -144,7 +144,7 @@ export function Founders() {
                 className="relative group"
               >
                 <div className="absolute -inset-1 bg-gradient-to-br from-amber-600/30 to-amber-800/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-                <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 overflow-hidden transition-all duration-300 h-full">
+                <div className="relative bg-black/[0.88] backdrop-blur-xl rounded-3xl border border-amber-500/20 group-hover:border-amber-500/40 overflow-hidden transition-all duration-300 h-full">
                   {/* Photo Container */}
                   <div className="relative aspect-[4/5]">
                     <img
@@ -157,21 +157,21 @@ export function Founders() {
                   {/* Content */}
                   <div className="p-8">
                     {/* Name & Role */}
-                    <h3 className="text-2xl font-bold mb-1 text-amber-100">{founder.name}</h3>
-                    <p className="text-amber-400 font-medium mb-4">{founder.role}</p>
+                    <h3 className="text-2xl font-bold mb-1 text-white">{founder.name}</h3>
+                    <p className="text-amber-400 font-semibold mb-4">{founder.role}</p>
 
                     {/* Description */}
-                    <p className="text-amber-100/70 leading-relaxed mb-6">
+                    <p className="text-amber-100/90 leading-relaxed mb-12">
                       {founder.description}
                     </p>
 
                     {/* Responsibilities */}
                     <div className="mb-6">
-                      <h4 className="text-amber-100/50 text-sm uppercase tracking-wide mb-3">Responsibilities</h4>
-                      <ul className="space-y-2">
+                      <h4 className="text-white text-sm uppercase tracking-wide mb-6 font-semibold">Responsibilities</h4>
+                      <ul className="space-y-4">
                         {founder.responsibilities.map((resp, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-amber-100/70 text-sm">
-                            <span className="text-amber-400 mt-1">•</span>
+                          <li key={idx} className="flex items-start gap-2 text-amber-100/90 text-sm leading-relaxed">
+                            <span className="text-green-400 mt-1">•</span>
                             {resp}
                           </li>
                         ))}
