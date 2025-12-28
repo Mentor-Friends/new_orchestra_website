@@ -67,7 +67,7 @@ export function Developers() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-600/20 to-amber-800/20 rounded-3xl blur-2xl" />
                 <div className="relative bg-[#1a1208]/80 backdrop-blur-xl rounded-3xl border border-amber-500/20 p-8">
-                  <div className="photo-immersive-circle w-48 h-48 mx-auto mb-4 rounded-full">
+                  <div className="mx-auto mb-4 rounded-full overflow-hidden" style={{ width: '320px', height: '320px' }}>
                     <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=400&h=400&fit=crop" alt="Orchestra" className="w-full h-full object-cover rounded-full" />
                   </div>
                   <div className="text-center text-amber-100/60">Orchestrate Your Workforce</div>

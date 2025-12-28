@@ -68,7 +68,7 @@ export function MainLanding() {
             >
               {/* Central Orchestra Image */}
               <div className="relative flex items-center justify-center min-h-[300px]">
-                <div className="relative w-48 h-48 rounded-full overflow-hidden">
+                <div className="relative rounded-full overflow-hidden" style={{ width: '320px', height: '320px' }}>
                   <div className="absolute -inset-4 bg-amber-400/20 blur-3xl rounded-full" />
                   <img
                     src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=500&h=500&fit=crop"
